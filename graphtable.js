@@ -242,6 +242,26 @@ function drawYOYChart(){
 			chart.draw(data, options);
 }
 
+function drawMOMChart(){
+	
+	var data = new google.visualization.DataTable();
+	data.addColumn('date', "Year");
+	data.addColumn('number', 'MoM trend from Janury 2004');
+	var row_data = new Array();
+	
+	for (i=0; i<data_set.length-12; i++){
+		row_data[row_data.length] = [data_set[i][0], (data_set[i+1][1]/data_set[i][1])-1];
+		
+	}
+	
+	data.addRows(row_data);
+	
+	var options = {'title':'Passenger Month on Month 2004-2014',
+                     'width':1000,
+                     'height':500};
 
+			var chart = new google.charts.Line(document.getElementById('MoM_chart'));
+			chart.draw(data, options);
+}
 	
 			
