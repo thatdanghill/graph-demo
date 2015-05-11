@@ -9,43 +9,9 @@
 		<script type="text/javascript">
 			
 			google.load('visualization', '1.0', {packages:['line']});
-			google.setOnLoadCallback(drawChart);
+			google.setOnLoadCallback(drawAllTheYearsChart);
 			
-			function drawChart() {
-				
-			var data = new google.visualization.DataTable;
-			data.addColumn('number', );
-			data.addColumn('number', 2004);
-			data.addColumn('number', 2005);
-			data.addColumn('number', 2006);
-			data.addColumn('number', 2007);
-			data.addColumn('number', 2008);
-			data.addColumn('number', 2009);
-			data.addColumn('number', 2010);
-			data.addColumn('number', 2011);
-			data.addColumn('number', 2012);
-			data.addColumn('number', 2013);
-			data.addColumn('number', 2014);
-			data.addRows([
-				
-				
-			]);
-			
-			var options = {'title':'Passenger Volume for easyJet 2004-2014',
-                     'width':1000,
-                     'height':500};
-
-			
-			
-			
-			
-			
-			var chart = new google.charts.Line(document.getElementById('chart'));
-			chart.draw(data, options);
-			
-			
-			}
-	</script>
+				</script>
 	</head>
 	<body>
 		<div id="header" height="100px">
@@ -56,7 +22,7 @@
 			</select> 
 		</div>
 		<div id="content">
-			<div id="chart"></div>
+			<div id="All the years"></div>
 		</div>
 	</body>
 </html>
