@@ -2,11 +2,50 @@
 <html>
 	<head>
 		<title> Grapher Demo </title>
-		<link type="css" src="rickshaw-master/rickshaw.min.css"></link>
+		<script type="text/javascript" src="https://www.google.com/jsapi"><script>
+		
 		<script src="jquery-1.11.3.min.js"> </script>
-		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-		<script src="rickshaw-master/rickshaw.min.js"></script>
 		<script src="graphtable.js"></script>
+		<script type="text/javascript">
+			
+			google.load('visualization', '1.0', {packages:['line']});
+			google.setOnLoadCallback(drawChart);
+			
+			function drawChart() {
+				
+			var data = new google.visualization.DataTable;
+			data.addColumn('number', );
+			data.addColumn('number', 2004);
+			data.addColumn('number', 2005);
+			data.addColumn('number', 2006);
+			data.addColumn('number', 2007);
+			data.addColumn('number', 2008);
+			data.addColumn('number', 2009);
+			data.addColumn('number', 2010);
+			data.addColumn('number', 2011);
+			data.addColumn('number', 2012);
+			data.addColumn('number', 2013);
+			data.addColumn('number', 2014);
+			data.addRows([
+				
+				
+			]);
+			
+			var options = {'title':'Passenger Volume for easyJet 2004-2014',
+                     'width':1000,
+                     'height':500};
+
+			
+			
+			
+			
+			
+			var chart = new google.charts.Line(document.getElementById('chart'));
+			chart.draw(data, options);
+			
+			
+			}
+	</script>
 	</head>
 	<body>
 		<div id="header" height="100px">
