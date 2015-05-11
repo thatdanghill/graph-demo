@@ -134,6 +134,7 @@ var data_set = new Array();
 		[new Date(2014, 11), 4836276]
 		
 	];
+	
 function drawAllTheYearsChart() {
 				
 			var data = new google.visualization.DataTable();
@@ -177,8 +178,69 @@ function drawAllTheYearsChart() {
 			var chart = new google.charts.Line(document.getElementById('All_the_years_chart'));
 			chart.draw(data, options);
 			
+			drawAllTheYearsTable(data);
+			document.getElementById("up-butt").disabled = true;
+			document.getElementById("down-butt").disabled = true;
 			
-			}
+}
+			
+function drawAllTheYearsTable(data) {
+	var table = new google.visualization.Table(document.getElementById('all-year-table'));
+
+    table.draw(data, {showRowNumber: true});
+    $('#all-year-table-wrap').hide();
+    google.visualization.events.addListener(table, 'select', selectHandler);
+}
+
+function drawChronTable(data) {
+	var table = new google.visualization.Table(document.getElementById('chron-table'));
+
+    table.draw(data, {showRowNumber: true});
+    $('#chron-table-wrap').hide();
+}
+
+function drawIndexTable(data) {
+	var table = new google.visualization.Table(document.getElementById('index-table'));
+
+    table.draw(data, {showRowNumber: true});
+    $('#index-table-wrap').hide();
+}
+
+function drawYoYTable(data) {
+	var table = new google.visualization.Table(document.getElementById('yoy-table'));
+
+    table.draw(data, {showRowNumber: true});
+    $('#yoy-table-wrap').hide();
+}
+
+function selectHandler() {
+	console.log(this.getSelection());
+	if (this.getSelection()) {
+		document.getElementById("up-butt").disabled = false;
+		document.getElementById("down-butt").disabled = false;	
+	} else {
+		document.getElementById("up-butt").disabled = true;
+		document.getElementById("down-butt").disabled = true;
+	}	
+}
+			
+function attachHandlers() {
+	$("#tab-toggle-all").click(function(){
+		$('#all-year-table-wrap').toggle("slow");
+	});
+	
+	$("#tab-toggle-chron").click(function(){
+		$('#chron-table-wrap').toggle("slow");
+	});
+	
+	$("#tab-toggle-index").click(function(){
+		$('#index-table-wrap').toggle("slow");
+	});
+	
+	$("#tab-toggle-yoy").click(function(){
+		$('#yoy-table-wrap').toggle("slow");
+	});
+}
 
 function drawChronologyChart(){
 	
@@ -194,7 +256,7 @@ function drawChronologyChart(){
 			
 			var chart = new google.charts.Line(document.getElementById('Chronology_chart'));
 			chart.draw(data, options);
-			
+			drawChronTable(data);
 
 	
 	
@@ -218,6 +280,7 @@ function drawIndexChart(){
 
 			var chart = new google.charts.Line(document.getElementById('Index_chart'));
 			chart.draw(data, options);
+			drawIndexTable(data);
 }
 
 function drawYOYChart(){
@@ -240,7 +303,9 @@ function drawYOYChart(){
 
 			var chart = new google.charts.Line(document.getElementById('YoY_chart'));
 			chart.draw(data, options);
+			drawYoYTable(data);
 }
+
 
 function drawMOMChart(){
 	
@@ -265,3 +330,4 @@ function drawMOMChart(){
 }
 	
 			
+
