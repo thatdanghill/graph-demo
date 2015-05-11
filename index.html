@@ -2,8 +2,11 @@
 <html>
 	<head>
 		<title> Grapher Demo </title>
+		<link type="css" src="rickshaw-master/rickshaw.min.css"></link>
 		<script src="jquery-1.11.3.min.js"> </script>
-		<script src="graph-demo.js"></script>
+		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+		<script src="rickshaw-master/rickshaw.min.js"></script>
+		<script src="graphtable.js"></script>
 	</head>
 	<body>
 		<div id="header" height="100px">
@@ -13,6 +16,8 @@
 				 <option value="easyjet">easyJet</option>
 			</select> 
 		</div>
-		<div id="content"></div>
+		<div id="content">
+			<div id="chart"></div>
+		</div>
 	</body>
 </html>
