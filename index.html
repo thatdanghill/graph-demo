@@ -11,11 +11,12 @@
 			google.load('visualization', '1.0', {packages:['line']});
 			google.setOnLoadCallback(drawAllTheYearsChart);
 			google.setOnLoadCallback(drawChronologyChart);
-			
+			google.setOnLoadCallback(drawIndexChart);
+			google.setOnLoadCallback(drawYOYChart);
 			
 				</script>
 	</head>
-	<body>
+	<body  width="1000px">
 		<div id="header" height="100px">
 			<select>
 				 <option value="westjet">Westjet</option>
@@ -25,7 +26,9 @@
 		</div>
 		<div id="content">
 			<div id="All_the_years_chart"></div>
-			<div id="Chronology_schart"></div>
+			<div id="Chronology_chart"></div>
+			<div id="Index_chart"></div>
+			<div id="YoY_chart"></div>
 		</div>
 		
 	</body>
