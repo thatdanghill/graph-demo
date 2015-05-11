@@ -2,16 +2,18 @@
 <html>
 	<head>
 		<title> Grapher Demo </title>
-		<script type="text/javascript" src="https://www.google.com/jsapi"><script>
-		
-		<script src="jquery-1.11.3.min.js"> </script>
-		<script src="graphtable.js"></script>
+		<meta charset="UTF-8">
+		<script type="text/javascript" src="http://www.google.com/jsapi"></script>	
+		<script type="text/javascript" src="jquery-1.11.3.min.js"> </script>
+		<script type="text/javascript" src="graphtable.js"></script>
 		<script type="text/javascript">
-			
-			google.load('visualization', '1.0', {packages:['line']});
+			google.load('visualization', '1.0', {packages:['line', 'table']});
 			google.setOnLoadCallback(drawAllTheYearsChart);
 			
-				</script>
+			$(document).ready(function(){
+				attachHandlers();
+			});
+		</script>
 	</head>
 	<body>
 		<div id="header" height="100px">
@@ -22,7 +24,14 @@
 			</select> 
 		</div>
 		<div id="content">
+			<h1 style="display: inline-block;"> All The Years! </h1>
+			<button id="tab-toggle" style="display: inline-block;"> Tab View </button>
 			<div id="All the years"></div>
+			<div id="all-year-table-wrap" display=none>
+				<button id="up-butt" style="display:inline-block;">Move up</button>
+				<button id="down-butt" style="display:inline-block;">Move down</button>
+				<div id="all-year-table" display=none></div>
+			</div>
 		</div>
 	</body>
 </html>

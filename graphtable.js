@@ -1,4 +1,3 @@
-
 function drawAllTheYearsChart() {
 				
 			var data = new google.visualization.DataTable;
@@ -42,6 +41,33 @@ function drawAllTheYearsChart() {
 			var chart = new google.charts.Line(document.getElementById('All the years'));
 			chart.draw(data, options);
 			
+			drawAllTheYearsTable(data);
+			document.getElementById("up-butt").disabled = true;
+			document.getElementById("down-butt").disabled = true;
 			
-			}
-	
+}
+			
+function drawAllTheYearsTable(data) {
+	var table = new google.visualization.Table(document.getElementById('all-year-table'));
+
+    table.draw(data, {showRowNumber: true});
+    $('#all-year-table-wrap').hide();
+    google.visualization.events.addListener(table, 'select', selectHandler);
+}
+
+function selectHandler() {
+	console.log(this.getSelection());
+	if (this.getSelection()) {
+		document.getElementById("up-butt").disabled = false;
+		document.getElementById("down-butt").disabled = false;	
+	} else {
+		document.getElementById("up-butt").disabled = true;
+		document.getElementById("down-butt").disabled = true;
+	}	
+}
+			
+function attachHandlers() {
+	$("#tab-toggle").click(function(){
+		$('#all-year-table-wrap').toggle("slow");
+	});
+}
