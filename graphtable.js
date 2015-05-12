@@ -193,28 +193,120 @@ function drawAllTheYearsTable(data) {
 }
 
 function drawChronTable(data) {
+	var data2 = new google.visualization.DataTable();
+	data2.addColumn('string','Month');
+	data2.addColumn('number', 2004);
+	data2.addColumn('number', 2005);
+	data2.addColumn('number', 2006);
+	data2.addColumn('number', 2007);
+	data2.addColumn('number', 2008);
+	data2.addColumn('number', 2009);
+	data2.addColumn('number', 2010);
+	data2.addColumn('number', 2011);
+	data2.addColumn('number', 2012);
+	data2.addColumn('number', 2013);
+	data2.addColumn('number', 2014);
+	data2.addRows(12);
+	data2.setFormattedValue(0,0,"Jan");
+	data2.setFormattedValue(1,0,"Feb");
+	data2.setFormattedValue(2,0,"Mar");
+	data2.setFormattedValue(3,0,"Apr");
+	data2.setFormattedValue(4,0,"May");
+	data2.setFormattedValue(5,0,"Jun");
+	data2.setFormattedValue(6,0,"Jul");
+	data2.setFormattedValue(7,0,"Aug");
+	data2.setFormattedValue(8,0,"Sep");
+	data2.setFormattedValue(9,0,"Oct");
+	data2.setFormattedValue(10,0,"Nov");
+	data2.setFormattedValue(11,0,"Dec");
+	for (var col = 1; col < 12; col++) {
+		for (var row = 0; row < 12; row++) {
+			data2.setFormattedValue(row,col,data.getFormattedValue((col-1)*12+row,1));
+		}
+	}
 	var table = new google.visualization.Table(document.getElementById('chron-table'));
 
-    table.draw(data, {showRowNumber: true});
+    table.draw(data2, {showRowNumber: true});
     $('#chron-table-wrap').hide();
 }
 
 function drawIndexTable(data) {
+	var data2 = new google.visualization.DataTable();
+	data2.addColumn('string','Month');
+	data2.addColumn('number', 2004);
+	data2.addColumn('number', 2005);
+	data2.addColumn('number', 2006);
+	data2.addColumn('number', 2007);
+	data2.addColumn('number', 2008);
+	data2.addColumn('number', 2009);
+	data2.addColumn('number', 2010);
+	data2.addColumn('number', 2011);
+	data2.addColumn('number', 2012);
+	data2.addColumn('number', 2013);
+	data2.addColumn('number', 2014);
+	data2.addRows(12);
+	data2.setFormattedValue(0,0,"Jan");
+	data2.setFormattedValue(1,0,"Feb");
+	data2.setFormattedValue(2,0,"Mar");
+	data2.setFormattedValue(3,0,"Apr");
+	data2.setFormattedValue(4,0,"May");
+	data2.setFormattedValue(5,0,"Jun");
+	data2.setFormattedValue(6,0,"Jul");
+	data2.setFormattedValue(7,0,"Aug");
+	data2.setFormattedValue(8,0,"Sep");
+	data2.setFormattedValue(9,0,"Oct");
+	data2.setFormattedValue(10,0,"Nov");
+	data2.setFormattedValue(11,0,"Dec");
+	for (var col = 1; col < 12; col++) {
+		for (var row = 0; row < 12; row++) {
+			data2.setFormattedValue(row,col,data.getFormattedValue((col-1)*12+row,1));
+		}
+	}
 	var table = new google.visualization.Table(document.getElementById('index-table'));
 
-    table.draw(data, {showRowNumber: true});
+    table.draw(data2, {showRowNumber: true});
     $('#index-table-wrap').hide();
 }
 
 function drawYoYTable(data) {
+	var data2 = new google.visualization.DataTable();
+	data2.addColumn('string','Month');
+	data2.addColumn('number', 2005);
+	data2.addColumn('number', 2006);
+	data2.addColumn('number', 2007);
+	data2.addColumn('number', 2008);
+	data2.addColumn('number', 2009);
+	data2.addColumn('number', 2010);
+	data2.addColumn('number', 2011);
+	data2.addColumn('number', 2012);
+	data2.addColumn('number', 2013);
+	data2.addColumn('number', 2014);
+	data2.addRows(12);
+	data2.setFormattedValue(0,0,"Jan");
+	data2.setFormattedValue(1,0,"Feb");
+	data2.setFormattedValue(2,0,"Mar");
+	data2.setFormattedValue(3,0,"Apr");
+	data2.setFormattedValue(4,0,"May");
+	data2.setFormattedValue(5,0,"Jun");
+	data2.setFormattedValue(6,0,"Jul");
+	data2.setFormattedValue(7,0,"Aug");
+	data2.setFormattedValue(8,0,"Sep");
+	data2.setFormattedValue(9,0,"Oct");
+	data2.setFormattedValue(10,0,"Nov");
+	data2.setFormattedValue(11,0,"Dec");
+	for (var col = 1; col < 11; col++) {
+		for (var row = 0; row < 12; row++) {
+			data2.setFormattedValue(row,col,parseFloat(data.getFormattedValue((col-1)*12+row,1)).toFixed(3).toString());
+		}
+	}
+
 	var table = new google.visualization.Table(document.getElementById('yoy-table'));
 
-    table.draw(data, {showRowNumber: true});
+    table.draw(data2, {showRowNumber: true});
     $('#yoy-table-wrap').hide();
 }
 
 function selectHandler() {
-	console.log(this.getSelection());
 	if (this.getSelection()) {
 		document.getElementById("up-butt").disabled = false;
 		document.getElementById("down-butt").disabled = false;	
@@ -272,7 +364,6 @@ function drawIndexChart(){
 	data.addColumn('number', 'Index trend from Janury 2004');
 	var row_data = new Array();
 	var first_term = data_set[0][1];
-	console.log(first_term);
 	for (i=0; i<data_set.length; i++){
 		row_data[row_data.length] = [data_set[i][0], (data_set[i][1]/first_term)*100];
 	}
@@ -335,9 +426,39 @@ function drawMOMChart(){
 }
 	
 function drawMoMTable(data) {
+	var data2 = new google.visualization.DataTable();
+	data2.addColumn('string','Month');
+	data2.addColumn('number', 2004);
+	data2.addColumn('number', 2005);
+	data2.addColumn('number', 2006);
+	data2.addColumn('number', 2007);
+	data2.addColumn('number', 2008);
+	data2.addColumn('number', 2009);
+	data2.addColumn('number', 2010);
+	data2.addColumn('number', 2011);
+	data2.addColumn('number', 2012);
+	data2.addColumn('number', 2013);
+	data2.addRows(12);
+	data2.setFormattedValue(0,0,"Jan");
+	data2.setFormattedValue(1,0,"Feb");
+	data2.setFormattedValue(2,0,"Mar");
+	data2.setFormattedValue(3,0,"Apr");
+	data2.setFormattedValue(4,0,"May");
+	data2.setFormattedValue(5,0,"Jun");
+	data2.setFormattedValue(6,0,"Jul");
+	data2.setFormattedValue(7,0,"Aug");
+	data2.setFormattedValue(8,0,"Sep");
+	data2.setFormattedValue(9,0,"Oct");
+	data2.setFormattedValue(10,0,"Nov");
+	data2.setFormattedValue(11,0,"Dec");
+	for (var col = 1; col < 11; col++) {
+		for (var row = 0; row < 12; row++) {
+			data2.setFormattedValue(row,col,parseFloat(data.getFormattedValue((col-1)*12+row,1)).toFixed(3).toString());
+		}
+	}
 	var table = new google.visualization.Table(document.getElementById('mom-table'));
 
-    table.draw(data, {showRowNumber: true});
+    table.draw(data2, {showRowNumber: true});
     $('#mom-table-wrap').hide();
 }			
 
