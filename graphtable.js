@@ -240,6 +240,10 @@ function attachHandlers() {
 	$("#tab-toggle-yoy").click(function(){
 		$('#yoy-table-wrap').toggle("slow");
 	});
+	
+	$("#tab-toggle-mom").click(function(){
+		$('#mom-table-wrap').toggle("slow");
+	});
 }
 
 function drawChronologyChart(){
@@ -327,6 +331,7 @@ function drawMOMChart(){
 
 			var chart = new google.charts.Line(document.getElementById('MoM_chart'));
 			chart.draw(data, options);
+			drawMoMTable(data);
 }
 
 function drawQOQChart(){
@@ -349,6 +354,7 @@ var data = new google.visualization.DataTable();
 		row_data[row_data.length] = [data_set[i+5][0], QoQ];
 	}
 	
+
 	data.addRows(row_data);
 	
 	var options = {'title':'Passenger Quarter on Quarter 2004-2014',
@@ -449,4 +455,12 @@ function draw3MAVChart(){
 
 	
 }		
+
+function drawMoMTable(data) {
+	var table = new google.visualization.Table(document.getElementById('mom-table'));
+
+    table.draw(data, {showRowNumber: true});
+    $('#mom-table-wrap').hide();
+}			
+
 
