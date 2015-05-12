@@ -18,9 +18,17 @@
 			google.setOnLoadCallback(draw12MTHRollingChart);
 			google.setOnLoadCallback(drawMOM12MTHRollingChart);
 			google.setOnLoadCallback(draw3MAVYOYChart);
+			google.setOnLoadCallback(drawImpliedFullYearBKWRDTotalAvgChart);
+			google.setOnLoadCallback(drawImpliedFullYearBKWRDLastThreeYearsAvgChart);
+			google.setOnLoadCallback(drawImpliedFullYearFRWRDTotalAvgChart);
+			
 			
 			$(document).ready(function(){
 				attachHandlers();
+				console.log(past_snl_data_ttl_avg);
+				console.log(past_snl_data_lst_three_years);
+				console.log(ftr_snl_data_ttl_avg);
+				
 				
 			});
 		</script>
@@ -34,7 +42,7 @@
 			</select> 
 		</div>
 		<div id="content">
-			<h1 style="display: inline-block;"> Passenger Volume per Year 2004-2014 (RAW)e</h1>
+			<h1 style="display: inline-block;"> Passenger Volume per Year 2004-2014 (RAW)</h1>
 			<button id="tab-toggle-all" style="display: inline-block;"> Tab View </button>
 			<div id="All_the_years_chart"></div>
 			<div id="all-year-table-wrap" display=none>
@@ -98,7 +106,20 @@
 			<div id="mom_12_mth_rolling_chart"></div>
 			
 			<br>
-			<div> 
+			<h1 style="display: inline-block;"> Implied Full Year based on Total Past Seasonality Average</h1>
+			<button id="tab-toggle-yoy" style="display: inline-block;"> Tab View </button>
+			<div id="Implied_Full_Year_BKWRD_Total_Avg_Chart"></div>
+			
+			<br>
+			<h1 style="display: inline-block;"> Implied Full Year based on Last Three Years Past Seasonality Average</h1>
+			<button id="tab-toggle-yoy" style="display: inline-block;"> Tab View </button>
+			<div id="Implied_Full_Year_BKWRD_Last_Three_Years_Avg_Chart"></div>
+			
+			<br>
+			<h1 style="display: inline-block;"> Implied Full Year based on Total Future Seasonality Average</h1>
+			<button id="tab-toggle-yoy" style="display: inline-block;"> Tab View </button>
+			<div id="Implied_Full_Year_FRWRD_Total_Avg_Chart"></div>
+			
 
 			
 

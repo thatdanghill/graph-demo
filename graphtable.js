@@ -161,21 +161,27 @@ var data_set = new Array();
 		 
 	}
 	
+	
+	
+var past_snl_data = getPastSeasonalData();
+	
+	
+	
 function getPastSeasonalTotalAverageData(){
 	
 	var data = new Array;
-	var Jan;
-	var Feb;
-	var Mar;
-	var Apr;
-	var May;
-	var Jun;
-	var Jul;
-	var Aug;
-	var Sep;
-	var Oct;
-	var Nov;
-	var Dec;
+	var Jan = 0;
+	var Feb = 0;
+	var Mar = 0;
+	var Apr = 0;
+	var May = 0;
+	var Jun = 0;
+	var Jul = 0;
+	var Aug = 0;
+	var Sep = 0;
+	var Oct = 0;
+	var Nov = 0;
+	var Dec = 0;
 	
 	for(i=0; i<past_snl_data.length; i++){
 		if (i%12 == 0){
@@ -220,22 +226,26 @@ function getPastSeasonalTotalAverageData(){
 		return data;
 	
 }	
+
+var past_snl_data_ttl_avg = getPastSeasonalTotalAverageData();
+
+
 	
 function getPastSeasonalLastThreeYearsData(){
 	
 	var data = new Array;
-	var Jan;
-	var Feb;
-	var Mar;
-	var Apr;
-	var May;
-	var Jun;
-	var Jul;
-	var Aug;
-	var Sep;
-	var Oct;
-	var Nov;
-	var Dec;
+	var Jan = 0;
+	var Feb = 0;
+	var Mar = 0;
+	var Apr = 0;
+	var May = 0;
+	var Jun = 0;
+	var Jul = 0;
+	var Aug = 0;
+	var Sep = 0;
+	var Oct = 0;
+	var Nov = 0;
+	var Dec = 0;
 	
 	for(i=84; i<past_snl_data.length; i++){
 		if (i%12 == 0){
@@ -279,6 +289,10 @@ function getPastSeasonalLastThreeYearsData(){
 		data = [Jan/3, Feb/3, Mar/3, Apr/3, May/3, Jun/3, Jul/3, Aug/3, Sep/3, Oct/3, Nov/3, Dec/3];
 		return data;
 	}
+	
+	
+var past_snl_data_lst_three_years = getPastSeasonalLastThreeYearsData();
+		
 	
 	
 function getFutureSeasonalData(){
@@ -327,26 +341,30 @@ function getFutureSeasonalData(){
 		
 data[data.length] = [data_set[i][0], (data_set[i][1]/total)];
 			
-	
+	return data;
 	}
 	
 }
 
+var ftr_snl_data = getFutureSeasonalData();
+
+
+
 function getFutureSeasonalTotalAverageData(){
 	
 	var data = new Array;
-	var Jan;
-	var Feb;
-	var Mar;
-	var Apr;
-	var May;
-	var Jun;
-	var Jul;
-	var Aug;
-	var Sep;
-	var Oct;
-	var Nov;
-	var Dec;
+	var Jan = 0;
+	var Feb = 0;
+	var Mar = 0;
+	var Apr = 0;
+	var May = 0;
+	var Jun = 0;
+	var Jul = 0;
+	var Aug = 0;
+	var Sep = 0;
+	var Oct = 0;
+	var Nov = 0;
+	var Dec = 0;
 	
 	for(i=0; i<ftr_snl_data.length; i++){
 		if (i%12 == 0){
@@ -393,21 +411,25 @@ function getFutureSeasonalTotalAverageData(){
 	
 }
 
+var ftr_snl_data_ttl_avg = getFutureSeasonalTotalAverageData();
+
+
+
 function getFutureSeasonalLastThreeYearsData(){
 	
 	var data = new Array;
-	var Jan;
-	var Feb;
-	var Mar;
-	var Apr;
-	var May;
-	var Jun;
-	var Jul;
-	var Aug;
-	var Sep;
-	var Oct;
-	var Nov;
-	var Dec;
+	var Jan = 0;
+	var Feb = 0;
+	var Mar = 0;
+	var Apr = 0;
+	var May = 0;
+	var Jun = 0;
+	var Jul = 0;
+	var Aug = 0;
+	var Sep = 0;
+	var Oct = 0;
+	var Nov = 0;
+	var Dec = 0;
 	
 	for(i=96; i<past_snl_data.length; i++){
 		if (i%12 == 0){
@@ -452,14 +474,13 @@ function getFutureSeasonalLastThreeYearsData(){
 		return data;
 }
 
+var ftr_snl_data_lst_three_years = getFutureSeasonalLastThreeYearsData();
 
-// Seasonlaity variables ----------------------------------------------------------------------
-	var past_snl_data = getPastSeasonalData();
-	var past_snl_data_ttl_avg = getPastSeasonalTotalAverageData();
-	var past_snl_data_lst_three_years = getPastSeasonalLastThreeYearsData();
-	var ftr_snl_data = getFutureSeasonalData();
-	var ftr_snl_data_ttl_avg = getFutureSeasonalTotalAverageData();
-	var ftr_snl_data_lst_three_years = getFutureSeasonalLastThreeYearsData();
+
+	
+	
+////// GRAPHS and TABLES ______________________________________________________________
+	
 
 
 
@@ -944,33 +965,203 @@ function draw3MAVYOYChart(){
 	
 }
 
-function drawSeaonalLookBackTotalChart(){
+
+function drawImpliedFullYearBKWRDTotalAvgChart(){
+	
 	
 	var data = new google.visualization.DataTable();
 	data.addColumn('date', "Year");
 	data.addColumn('number', ' 2004-2014');
 	
-	 var three_MAV_data = new Array();
-	
-	for (i=0; i<data_set.length-2; i++){
-		three_MAV_data[three_MAV_data.length] = [data_set[i+2][0], (data_set[i][1] + data_set[i+1][1] + data_set[i+2][1])/3];
-		
-	}
-	
 	var row_data = new Array;
 	
-	for (i=0, j=12; i<three_MAV_data.length-12, j<three_MAV_data.length; i++, j++){
-		row_data[row_data.length] = [three_MAV_data[j][0], (three_MAV_data[j][1]/three_MAV_data[i][1])-1];
+	for (i=0; i<data_set.length; i++){
+		
+		
+		var average; 
+		
+				if (i%12 == 0){
+					average = past_snl_data_ttl_avg[0];
+				}
+				else if (i%12 == 1){
+					average = past_snl_data_ttl_avg[1];
+				}
+				else if (i%12 == 2){
+					average = past_snl_data_ttl_avg[2];
+				}
+				else if (i%12 == 3){
+					average = past_snl_data_ttl_avg[3];
+				}
+				else if (i%12 == 4){
+					average = past_snl_data_ttl_avg[4];
+				}
+				else if (i%12 == 5){
+					average = past_snl_data_ttl_avg[5];
+				}
+				else if (i%12 == 6){
+					average = past_snl_data_ttl_avg[6];
+				}
+				else if (i%12 == 7){
+					average = past_snl_data_ttl_avg[7];
+				}
+				else if (i%12 == 8){
+					average = past_snl_data_ttl_avg[8];
+				}
+				else if (i%12 == 9){
+					average = past_snl_data_ttl_avg[9];
+				}
+				else if (i%12 == 10){
+					average = past_snl_data_ttl_avg[10];
+				}
+				else if (i%12 == 11){
+					average = past_snl_data_ttl_avg[11];
+				}
+			
+		
+		row_data[row_data.length] = [data_set[i][0], (data_set[i][1]/average)];
 	
 	}
 	
 	data.addRows(row_data);
 	
-	var options = {'title':'3MAV 2004-2014',
+	var options = {'title':' 2004-2014',
                      'width':1000,
                      'height':500};
 
-			var chart = new google.charts.Line(document.getElementById('3MAV_YOY_chart'));
+			var chart = new google.charts.Line(document.getElementById('Implied_Full_Year_BKWRD_Total_Avg_Chart'));
+			chart.draw(data, options);
+	
+}
+
+function drawImpliedFullYearBKWRDLastThreeYearsAvgChart(){
+	
+	
+	var data = new google.visualization.DataTable();
+	data.addColumn('date', "Year");
+	data.addColumn('number', ' 2004-2014');
+	
+	var row_data = new Array;
+	
+	for (i=0; i<data_set.length; i++){
+		
+		
+		var average; 
+		
+				if (i%12 == 0){
+					average = past_snl_data_lst_three_years[0];
+				}
+				else if (i%12 == 1){
+					average = past_snl_data_lst_three_years[1];
+				}
+				else if (i%12 == 2){
+					average = past_snl_data_lst_three_years[2];
+				}
+				else if (i%12 == 3){
+					average = past_snl_data_lst_three_years[3];
+				}
+				else if (i%12 == 4){
+					average = past_snl_data_lst_three_years[4];
+				}
+				else if (i%12 == 5){
+					average = past_snl_data_lst_three_years[5];
+				}
+				else if (i%12 == 6){
+					average = past_snl_data_lst_three_years[6];
+				}
+				else if (i%12 == 7){
+					average = past_snl_data_lst_three_years[7];
+				}
+				else if (i%12 == 8){
+					average = past_snl_data_lst_three_years[8];
+				}
+				else if (i%12 == 9){
+					average = past_snl_data_lst_three_years[9];
+				}
+				else if (i%12 == 10){
+					average = past_snl_data_lst_three_years[10];
+				}
+				else if (i%12 == 11){
+					average = past_snl_data_lst_three_years[11];
+				}
+			
+		
+		row_data[row_data.length] = [data_set[i][0], (data_set[i][1]/average)];
+	
+	}
+	
+	data.addRows(row_data);
+	
+	var options = {'title':' 2004-2014',
+                     'width':1000,
+                     'height':500};
+
+			var chart = new google.charts.Line(document.getElementById('Implied_Full_Year_BKWRD_Last_Three_Years_Avg_Chart'));
+			chart.draw(data, options);
+			
+}
+
+function drawImpliedFullYearFRWRDTotalAvgChart(){
+	
+	var data = new google.visualization.DataTable();
+	data.addColumn('date', "Year");
+	data.addColumn('number', ' 2004-2014');
+	
+	var row_data = new Array;
+	
+	for (i=0; i<data_set.length; i++){
+		
+		
+		var average; 
+		
+				if (i%12 == 0){
+					average = ftr_snl_data_ttl_avg[0];
+				}
+				else if (i%12 == 1){
+					average = ftr_snl_data_ttl_avg[1];
+				}
+				else if (i%12 == 2){
+					average = ftr_snl_data_ttl_avg[2];
+				}
+				else if (i%12 == 3){
+					average = ftr_snl_data_ttl_avg[3];
+				}
+				else if (i%12 == 4){
+					average = ftr_snl_data_ttl_avg[4];
+				}
+				else if (i%12 == 5){
+					average = ftr_snl_data_ttl_avg[5];
+				}
+				else if (i%12 == 6){
+					average = ftr_snl_data_ttl_avg[6];
+				}
+				else if (i%12 == 7){
+					average = ftr_snl_data_ttl_avg[7];
+				}
+				else if (i%12 == 8){
+					average = ftr_snl_data_ttl_avg[8];
+				}
+				else if (i%12 == 9){
+					average = ftr_snl_data_ttl_avg[9];
+				}
+				else if (i%12 == 10){
+					average = ftr_snl_data_ttl_avg[10];
+				}
+				else if (i%12 == 11){
+					average = ftr_snl_data_ttl_avg[11];
+				}
+			
+		
+		row_data[row_data.length] = [data_set[i][0], (data_set[i][1]/average)];
+	
+	}
+	
+	data.addRows(row_data);
+	
+	var options = {'title':' 2004-2014',
+                     'width':1000,
+                     'height':500};
+
+			var chart = new google.charts.Line(document.getElementById('Implied_Full_Year_BKWRD_Total_Avg_Chart'));
 			chart.draw(data, options);
 	
 }
