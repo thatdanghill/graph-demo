@@ -707,6 +707,23 @@ function attachHandlers() {
 	$("#tab-toggle-mom-mth").click(function(){
 		$('#mom-mth-table-wrap').toggle("slow");
 	});
+	
+	$('#airline').change(function(){
+		if ($('#airline').val() == 'easyjet') {
+			$('#easyjet').show();
+			$('#westjet').hide();
+			$('#klm').hide();
+		}
+		else if ($('#airline').val() == 'westjet') {
+			$('#easyjet').hide();
+			$('#westjet').show();
+			$('#klm').hide();
+		} else if ($('#airline').val() == 'klm') {
+			$('#easyjet').hide();
+			$('#westjet').hide();
+			$('#klm').show();
+		}
+	});
 }
 
 function drawChronologyChart(){
@@ -1282,8 +1299,10 @@ function drawImpliedFullYearBKWRDTotalAvgChart(){
 	data.addRows(row_data);
 	
 	var options = {'title':' 2004-2014',
-                     'width':1000,
-                     'height':500};
+                     'height' : 750,
+				'chartArea.width' : 700,
+		'chartArea.height' : 500,
+		'legend': {position: 'none'}};
 
 			var chart = new google.charts.Line(document.getElementById('Implied_Full_Year_BKWRD_Total_Avg_Chart'));
 			chart.draw(data, options);
@@ -1421,12 +1440,14 @@ function drawImpliedFullYearFRWRDTotalAvgChart(){
 	data.addRows(row_data);
 	
 	var options = {'title':' 2004-2014',
-                     'width':1000,
-                     'height':500};
+                     'height' : 750,
+				'chartArea.width' : 700,
+		'chartArea.height' : 500,
+		'legend': {position: 'none'}};
 
 			var chart = new google.charts.Line(document.getElementById('Implied_Full_Year_FRWRD_Total_Avg_Chart'));
 			chart.draw(data, options);
-	
+
 }
 
 function drawImpliedFullYearFRWRDLastThreeYearsAvgChart(){
@@ -1896,4 +1917,7 @@ function draw3MAVYOY12MTHRollingChart(){
 	
 }
 	
+
+
+
 
