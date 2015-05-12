@@ -25,23 +25,18 @@
 			
 			$(document).ready(function(){
 				attachHandlers();
-				console.log(past_snl_data_ttl_avg);
-				console.log(past_snl_data_lst_three_years);
-				console.log(ftr_snl_data_ttl_avg);
-				
-				
 			});
 		</script>
 	</head>
 	<body>
 		<div id="header" height="100">
-			<select>
+			<select id="airline">
+				<option value="easyjet">easyJet</option>
 				 <option value="westjet">Westjet</option>
 				 <option value="klm">KLM</option>
-				 <option value="easyjet">easyJet</option>
 			</select> 
 		</div>
-		<div id="content">
+		<div id="easyjet" display='none'>
 			<h1 style="display: inline-block;"> Passenger Volume per Year 2004-2014 (RAW)</h1>
 			<button id="tab-toggle-all" style="display: inline-block;"> Tab View </button>
 			<div id="All_the_years_chart" width='2000' height='700'></div>
@@ -127,19 +122,27 @@
 			<br>
 
 			<h1 style="display: inline-block;"> Implied Full Year based on Total Past Seasonality Average</h1>
-			<button id="tab-toggle-yoy" style="display: inline-block;"> Tab View </button>
-			<div id="Implied_Full_Year_BKWRD_Total_Avg_Chart"></div>
+			<button id="tab-toggle-imptot" style="display: inline-block;"> Tab View </button>
+			<div id="Implied_Full_Year_BKWRD_Total_Avg_Chart" width='2000' height='700'></div>
+			<div id="imptot-table-wrap" display=none>
+				<div id="imptot-table" display=none></div>
+			</div>
 			
 			<br>
 			<h1 style="display: inline-block;"> Implied Full Year based on Last Three Years Past Seasonality Average</h1>
-			<button id="tab-toggle-yoy" style="display: inline-block;"> Tab View </button>
-			<div id="Implied_Full_Year_BKWRD_Last_Three_Years_Avg_Chart"></div>
+			<button id="tab-toggle-imp3" style="display: inline-block;"> Tab View </button>
+			<div id="Implied_Full_Year_BKWRD_Last_Three_Years_Avg_Chart" width='2000' height='700'></div>
+			<div id="imp3-table-wrap" display=none>
+				<div id="imp3-table" display=none></div>
+			</div>
 			
 			<br>
 			<h1 style="display: inline-block;"> Implied Full Year based on Total Future Seasonality Average</h1>
-			<button id="tab-toggle-yoy" style="display: inline-block;"> Tab View </button>
-			<div id="Implied_Full_Year_FRWRD_Total_Avg_Chart"></div>
-			
+			<button id="tab-toggle-impfut" style="display: inline-block;"> Tab View </button>
+			<div id="Implied_Full_Year_FRWRD_Total_Avg_Chart" width='2000' height='700'></div>
+			<div id="impfut-table-wrap" display=none>
+				<div id="impfut-table" display=none></div>
+			</div>
 
 
 			
@@ -152,6 +155,7 @@
 
 
 		</div>
-		
+		<div id="westjet" display="none"></div>
+		<div id="klm" display="none"></div>
 	</body>
 </html>
