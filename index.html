@@ -33,8 +33,8 @@
 			});
 		</script>
 	</head>
-	<body  width="1000px">
-		<div id="header" height="100px">
+	<body>
+		<div id="header" height="100">
 			<select>
 				 <option value="westjet">Westjet</option>
 				 <option value="klm">KLM</option>
@@ -44,68 +44,88 @@
 		<div id="content">
 			<h1 style="display: inline-block;"> Passenger Volume per Year 2004-2014 (RAW)</h1>
 			<button id="tab-toggle-all" style="display: inline-block;"> Tab View </button>
-			<div id="All_the_years_chart"></div>
+			<div id="All_the_years_chart" width='2000' height='700'></div>
 			<div id="all-year-table-wrap" display=none>
 				<button id="up-butt" style="display:inline-block;">Move up</button>
 				<button id="down-butt" style="display:inline-block;">Move down</button>
 				<div id="all-year-table" display=none></div>
 			</div>
+			
 			<br>
+			
 			<h1 style="display: inline-block;">Total Passenger Volume 2004-2014 (RAW) </h1>
 			<button id="tab-toggle-chron" style="display: inline-block;"> Tab View </button>
-			<div id="Chronology_chart"></div>
+			<div id="Chronology_chart" width='2000' height='700'></div>
 			<div id="chron-table-wrap" display=none>
 				<div id="chron-table" display=none></div>
 			</div>
+			
 			<br>
+			
 			<h1 style="display: inline-block;"> Indexed Passenger Volume 2004-2014 (RAW)</h1>
 			<button id="tab-toggle-index" style="display: inline-block;"> Tab View </button>
-			<div id="Index_chart"></div>
+			<div id="Index_chart" width='2000' height='700'></div>
 			<div id="index-table-wrap" display=none>
 				<div id="index-table" display=none></div>
 			</div>
+			
 			<br>
+			
 			<h1 style="display: inline-block;"> YoY 2004-2014 (RAW)</h1>
 			<button id="tab-toggle-yoy" style="display: inline-block;"> Tab View </button>
-			<div id="YoY_chart"></div>
+			<div id="YoY_chart" width='2000' height='700'></div>
 			<div id="yoy-table-wrap" display=none>
 				<div id="yoy-table" display=none></div>
 			</div>
+			
 			<br>
-
-			<h1 style="display: inline-block;"> MoM 2004-2014 (RAW) </h1>
+			
+			<h1 style="display: inline-block;"> MoM 2004-2014 (RAW)</h1>
 			<button id="tab-toggle-mom" style="display: inline-block;"> Tab View </button>
-			<div id="MoM_chart"></div>
+			<div id="MoM_chart" width='2000' height='700'></div>
 			<div id="mom-table-wrap" display=none>
 				<div id="mom-table" display=none></div>
 			</div>
 			
 			<br>
+			
 			<h1 style="display: inline-block;"> QoQ 2004-2014 (RAW)</h1>
-			<button id="tab-toggle-yoy" style="display: inline-block;"> Tab View </button>
-			<div id="QoQ_chart"></div>
+			<button id="tab-toggle-qoq" style="display: inline-block;"> Tab View </button>
+			<div id="QoQ_chart" width='2000' height='700'></div>
+			<div id="qoq-table-wrap" display=none>
+				<div id="qoq-table" display=none></div>
+			</div>
 			
 			<br>
+			
 			<h1 style="display: inline-block;"> 3MAV 2004-2014 (RAW)</h1>
-			<button id="tab-toggle-yoy" style="display: inline-block;"> Tab View </button>
-			<div id="3MAV_chart"></div>
+			<button id="tab-toggle-mav" style="display: inline-block;"> Tab View </button>
+			<div id="3MAV_chart" width='2000' height='700'></div>
+			<div id="mav-table-wrap" display=none>
+				<div id="mav-table" display=none></div>
+			</div>
+			
 			<br>
+			
 			<h1 style="display: inline-block;"> YoY for the 3MAV 2004-2014 (RAW)</h1>
-			<button id="tab-toggle-yoy" style="display: inline-block;"> Tab View </button>
-			<div id="3MAV_YOY_chart"></div>
-			
+			<button id="tab-toggle-mav-yoy" style="display: inline-block;"> Tab View </button>
+			<div id="3MAV_YOY_chart" width='2000' height='700'></div>
+			<div id="mav-yoy-table-wrap" display=none>
+				<div id="mav-yoy-table" display=none></div>
+			</div>
 			
 			<br>
+			
 			<h1 style="display: inline-block;"> 12 Month Rolling 2004-2014 (RAW)</h1>
-			<button id="tab-toggle-yoy" style="display: inline-block;"> Tab View </button>
-			<div id="12_mth_rolling_chart"></div>
+			<button id="tab-toggle-mth" style="display: inline-block;"> Tab View </button>
+			<div id="12_mth_rolling_chart" width='2000' height='700'></div>
+			<div id="mth-table-wrap" display=none>
+				<div id="mth-table" display=none></div>
+			</div>
+			
 			
 			<br>
-			<h1 style="display: inline-block;"> MoM based on 12 Month Rolling 2004-2014 (RAW)</h1>
-			<button id="tab-toggle-yoy" style="display: inline-block;"> Tab View </button>
-			<div id="mom_12_mth_rolling_chart"></div>
-			
-			<br>
+
 			<h1 style="display: inline-block;"> Implied Full Year based on Total Past Seasonality Average</h1>
 			<button id="tab-toggle-yoy" style="display: inline-block;"> Tab View </button>
 			<div id="Implied_Full_Year_BKWRD_Total_Avg_Chart"></div>
@@ -121,7 +141,14 @@
 			<div id="Implied_Full_Year_FRWRD_Total_Avg_Chart"></div>
 			
 
+
 			
+			<h1 style="display: inline-block;"> MoM based on 12 Month Rolling 2004-2014 (RAW)</h1>
+			<button id="tab-toggle-mom-mth" style="display: inline-block;"> Tab View </button>
+			<div id="mom_12_mth_rolling_chart" width='2000' height='700'></div>
+			<div id="mom-mth-table-wrap" display=none>
+				<div id="mom-mth-table" display=none></div>
+			</div>
 
 
 		</div>
