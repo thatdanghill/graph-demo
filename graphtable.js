@@ -167,8 +167,10 @@ function drawAllTheYearsChart() {
 			]);
 			
 			var options = {'title':'Passenger Volume per year (2004-2014)',
-                     'width':1000,
-                     'height':500};
+		'height' : 750,
+				'chartArea.width' : 700,
+		'chartArea.height' : 500,
+			};
 
 			
 			
@@ -346,8 +348,11 @@ function drawChronologyChart(){
 	data.addRows(data_set);
 	
 	var options = {'title':'Total Passenger Volume 2004-2014',
-                     'width':1000,
-                     'height':500};
+		'height' : 750,
+		'chartArea.width' : 700,
+		'chartArea.height' : 500,
+		'legend': {position: 'none'}
+	};
 
 			
 			var chart = new google.charts.Line(document.getElementById('Chronology_chart'));
@@ -370,8 +375,11 @@ function drawIndexChart(){
 	data.addRows(row_data);
 	
 	var options = {'title':'Total Passenger Index 2004-2014',
-                     'width':1000,
-                     'height':500};
+		'height' : 750,
+		'chartArea.width' : 700,
+		'chartArea.height' : 500,
+		'legend': {position: 'none'}
+	};
 
 			var chart = new google.charts.Line(document.getElementById('Index_chart'));
 			chart.draw(data, options);
@@ -393,8 +401,11 @@ function drawYOYChart(){
 	data.addRows(row_data);
 	
 	var options = {'title':'Passenger Year on Year 2004-2014',
-                     'width':1000,
-                     'height':500};
+		'height' : 750,
+		'chartArea.width' : 700,
+		'chartArea.height' : 500,
+		'legend': {position: 'none'}
+	};
 
 			var chart = new google.charts.Line(document.getElementById('YoY_chart'));
 			chart.draw(data, options);
@@ -417,8 +428,11 @@ function drawMOMChart(){
 	data.addRows(row_data);
 	
 	var options = {'title':'Passenger Month on Month 2004-2014',
-                     'width':1000,
-                     'height':500};
+		'height' : 750,
+		'chartArea.width' : 700,
+		'chartArea.height' : 500,
+		'legend': {position: 'none'}
+	};
 
 			var chart = new google.charts.Line(document.getElementById('MoM_chart'));
 			chart.draw(data, options);
@@ -449,8 +463,11 @@ var data = new google.visualization.DataTable();
 	data.addRows(row_data);
 	
 	var options = {'title':'Passenger Quarter on Quarter 2004-2014',
-                     'width':1000,
-                     'height':500};
+		'height' : 750,
+		'chartArea.width' : 700,
+		'chartArea.height' : 500,
+		'legend': {position: 'none'}
+	};
 
 			var chart = new google.charts.Line(document.getElementById('QoQ_chart'));
 			chart.draw(data, options);
@@ -476,8 +493,11 @@ function draw12MTHRollingChart(){
 	data.addRows(row_data);
 	
 	var options = {'title':'12 Month Rolling 2004-2014',
-                     'width':1000,
-                     'height':500};
+		'height' : 750,
+		'chartArea.width' : 700,
+		'chartArea.height' : 500,
+		'legend': {position: 'none'}
+	};
 
 			var chart = new google.charts.Line(document.getElementById('12_mth_rolling_chart'));
 			chart.draw(data, options);
@@ -508,8 +528,11 @@ function drawMOM12MTHRollingChart() {
 	data.addRows(row_data);
 	
 	var options = {'title':'MoM for the 12 Month Rolling 2004-2014',
-                     'width':1000,
-                     'height':500};
+		'height' : 750,
+		'chartArea.width' : 700,
+		'chartArea.height' : 500,
+		'legend': {position: 'none'}
+	};
 
 			var chart = new google.charts.Line(document.getElementById('mom_12_mth_rolling_chart'));
 			chart.draw(data, options);
@@ -535,8 +558,11 @@ function draw3MAVChart(){
 	data.addRows(row_data);
 	
 	var options = {'title':'3MAV 2004-2014',
-                     'width':1000,
-                     'height':500};
+		'height' : 750,
+		'chartArea.width' : 700,
+		'chartArea.height' : 500,
+		'legend': {position: 'none'}
+	};
 
 			var chart = new google.charts.Line(document.getElementById('3MAV_chart'));
 			chart.draw(data, options);
