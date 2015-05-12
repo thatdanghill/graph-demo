@@ -1,3 +1,4 @@
+// Variables created to make coding graphs easier
 var data_set = new Array();
 	data_set = [
 		[new Date(2004, 0), 1683699],
@@ -135,6 +136,333 @@ var data_set = new Array();
 		
 	];
 	
+	var yearly_totals = [25716329,	30301991,	33675905,	38234660,	44583476,	46077459,	49719110,	55471760,	59204632,	61332803,	65701248];
+	
+	
+	
+//----------------------------------------------------------------------------------------------------------------	
+// Functions to create some of the seasonal variables	
+	function getPastSeasonalData(){
+		
+		rolling_data = new Array;
+		 for (i=0; i<data_set.length-12; i++){
+		
+		rolling_data[rolling_data.length] = [data_set[i+12][0], (data_set[i+1][1] + data_set[i+2][1] + data_set[i+3][1] + 
+										data_set[i+4][1] + data_set[i+5][1] + data_set[i+6][1] + data_set[i+7][1] + data_set[i+8][1] + 												data_set[i+9][1] + data_set[i+10][1] + data_set[i+11][1] + data_set[i+12][1])];
+	}
+	
+	var data = new Array;
+	for (i=0, j=0; i<rolling_data.length, j<data_set.length-12; i++, j++){
+		data[data.length] =[data_set[j+12][0], (data_set[j+12][1]/rolling_data[i][1])] 
+		
+	}
+	
+	return data;
+		 
+	}
+	
+function getPastSeasonalTotalAverageData(){
+	
+	var data = new Array;
+	var Jan;
+	var Feb;
+	var Mar;
+	var Apr;
+	var May;
+	var Jun;
+	var Jul;
+	var Aug;
+	var Sep;
+	var Oct;
+	var Nov;
+	var Dec;
+	
+	for(i=0; i<past_snl_data.length; i++){
+		if (i%12 == 0){
+			Jan = Jan + past_snl_data[i][1];
+			}
+		if (i%12 == 1){
+			Feb = Feb + past_snl_data[i][1];
+			}
+		if (i%12 == 2){
+			Mar = Mar + past_snl_data[i][1];
+			}
+		if (i%12 == 3){
+			Apr = Apr + past_snl_data[i][1];
+			}
+		if (i%12 == 4){
+			May = May + past_snl_data[i][1];
+			}
+		if (i%12 == 5){
+			Jun = Jun + past_snl_data[i][1];
+			}
+		if (i%12 == 6){
+			Jul = Jul + past_snl_data[i][1];
+			}
+		if (i%12 == 7){
+			Aug = Aug + past_snl_data[i][1];
+			}
+		if (i%12 == 8){
+			Sep = Sep + past_snl_data[i][1];
+			}
+		if (i%12 == 9){
+			Oct = Oct + past_snl_data[i][1];
+			}
+		if (i%12 == 10){
+			Nov = Nov + past_snl_data[i][1];
+			}
+		if (i%12 == 11){
+			Dec = Dec + past_snl_data[i][1];
+			}
+		}
+		
+		data = [Jan/10, Feb/10, Mar/10, Apr/10, May/10, Jun/10, Jul/10, Aug/10, Sep/10, Oct/10, Nov/10, Dec/10];
+		return data;
+	
+}	
+	
+function getPastSeasonalLastThreeYearsData(){
+	
+	var data = new Array;
+	var Jan;
+	var Feb;
+	var Mar;
+	var Apr;
+	var May;
+	var Jun;
+	var Jul;
+	var Aug;
+	var Sep;
+	var Oct;
+	var Nov;
+	var Dec;
+	
+	for(i=84; i<past_snl_data.length; i++){
+		if (i%12 == 0){
+			Jan = Jan + past_snl_data[i][1];
+			}
+		if (i%12 == 1){
+			Feb = Feb + past_snl_data[i][1];
+			}
+		if (i%12 == 2){
+			Mar = Mar + past_snl_data[i][1];
+			}
+		if (i%12 == 3){
+			Apr = Apr + past_snl_data[i][1];
+			}
+		if (i%12 == 4){
+			May = May + past_snl_data[i][1];
+			}
+		if (i%12 == 5){
+			Jun = Jun + past_snl_data[i][1];
+			}
+		if (i%12 == 6){
+			Jul = Jul + past_snl_data[i][1];
+			}
+		if (i%12 == 7){
+			Aug = Aug + past_snl_data[i][1];
+			}
+		if (i%12 == 8){
+			Sep = Sep + past_snl_data[i][1];
+			}
+		if (i%12 == 9){
+			Oct = Oct + past_snl_data[i][1];
+			}
+		if (i%12 == 10){
+			Nov = Nov + past_snl_data[i][1];
+			}
+		if (i%12 == 11){
+			Dec = Dec + past_snl_data[i][1];
+			}
+		}
+		
+		data = [Jan/3, Feb/3, Mar/3, Apr/3, May/3, Jun/3, Jul/3, Aug/3, Sep/3, Oct/3, Nov/3, Dec/3];
+		return data;
+	}
+	
+	
+function getFutureSeasonalData(){
+	
+	var data = new Array;
+	for (i=0; i<data_set.length; i++){
+		
+	var total;
+	 		if(i < 12){
+			total = yearly_totals[0];
+		}
+		else if(i < 24){
+			total = yearly_totals[1];
+		}
+		else if(i < 36){
+			total = yearly_totals[2];
+		}
+		else if(i < 48){
+			total = yearly_totals[3];
+		}
+		else if(i < 60){
+			total = yearly_totals[4];
+		}
+		else if(i < 72){
+			total = yearly_totals[5];
+		}
+		else if(i < 84){
+			total = yearly_totals[6];
+		}
+		else if(i < 96){
+			total = yearly_totals[7];
+		}
+		else if(i < 108){
+			total = yearly_totals[8];
+		}
+		else if(i < 120){
+			total = yearly_totals[9];
+		}
+		else if(i < 132){
+			total = yearly_totals[10];
+		}
+		else if(i < 144){
+			total = yearly_totals[11];
+		}
+		
+		
+data[data.length] = [data_set[i][0], (data_set[i][1]/total)];
+			
+	
+	}
+	
+}
+
+function getFutureSeasonalTotalAverageData(){
+	
+	var data = new Array;
+	var Jan;
+	var Feb;
+	var Mar;
+	var Apr;
+	var May;
+	var Jun;
+	var Jul;
+	var Aug;
+	var Sep;
+	var Oct;
+	var Nov;
+	var Dec;
+	
+	for(i=0; i<ftr_snl_data.length; i++){
+		if (i%12 == 0){
+			Jan = Jan + ftr_snl_data[i][1];
+			}
+		if (i%12 == 1){
+			Feb = Feb + ftr_snl_data[i][1];
+			}
+		if (i%12 == 2){
+			Mar = Mar + ftr_snl_data[i][1];
+			}
+		if (i%12 == 3){
+			Apr = Apr + ftr_snl_data[i][1];
+			}
+		if (i%12 == 4){
+			May = May + ftr_snl_data[i][1];
+			}
+		if (i%12 == 5){
+			Jun = Jun + ftr_snl_data[i][1];
+			}
+		if (i%12 == 6){
+			Jul = Jul + ftr_snl_data[i][1];
+			}
+		if (i%12 == 7){
+			Aug = Aug + ftr_snl_data[i][1];
+			}
+		if (i%12 == 8){
+			Sep = Sep + ftr_snl_data[i][1];
+			}
+		if (i%12 == 9){
+			Oct = Oct + ftr_snl_data[i][1];
+			}
+		if (i%12 == 10){
+			Nov = Nov + ftr_snl_data[i][1];
+			}
+		if (i%12 == 11){
+			Dec = Dec + ftr_snl_data[i][1];
+			}
+		}
+		
+		data = [Jan/11, Feb/11, Mar/11, Apr/11, May/11, Jun/11, Jul/11, Aug/11, Sep/11, Oct/11, Nov/11, Dec/11];
+		return data;
+
+	
+}
+
+function getFutureSeasonalLastThreeYearsData(){
+	
+	var data = new Array;
+	var Jan;
+	var Feb;
+	var Mar;
+	var Apr;
+	var May;
+	var Jun;
+	var Jul;
+	var Aug;
+	var Sep;
+	var Oct;
+	var Nov;
+	var Dec;
+	
+	for(i=96; i<past_snl_data.length; i++){
+		if (i%12 == 0){
+			Jan = Jan + past_snl_data[i][1];
+			}
+		if (i%12 == 1){
+			Feb = Feb + past_snl_data[i][1];
+			}
+		if (i%12 == 2){
+			Mar = Mar + past_snl_data[i][1];
+			}
+		if (i%12 == 3){
+			Apr = Apr + past_snl_data[i][1];
+			}
+		if (i%12 == 4){
+			May = May + past_snl_data[i][1];
+			}
+		if (i%12 == 5){
+			Jun = Jun + past_snl_data[i][1];
+			}
+		if (i%12 == 6){
+			Jul = Jul + past_snl_data[i][1];
+			}
+		if (i%12 == 7){
+			Aug = Aug + past_snl_data[i][1];
+			}
+		if (i%12 == 8){
+			Sep = Sep + past_snl_data[i][1];
+			}
+		if (i%12 == 9){
+			Oct = Oct + past_snl_data[i][1];
+			}
+		if (i%12 == 10){
+			Nov = Nov + past_snl_data[i][1];
+			}
+		if (i%12 == 11){
+			Dec = Dec + past_snl_data[i][1];
+			}
+		}
+		
+		data = [Jan/3, Feb/3, Mar/3, Apr/3, May/3, Jun/3, Jul/3, Aug/3, Sep/3, Oct/3, Nov/3, Dec/3];
+		return data;
+}
+
+
+// Seasonlaity variables ----------------------------------------------------------------------
+	var past_snl_data = getPastSeasonalData();
+	var past_snl_data_ttl_avg = getPastSeasonalTotalAverageData();
+	var past_snl_data_lst_three_years = getPastSeasonalLastThreeYearsData();
+	var ftr_snl_data = getFutureSeasonalData();
+	var ftr_snl_data_ttl_avg = getFutureSeasonalTotalAverageData();
+	var ftr_snl_data_lst_three_years = getFutureSeasonalLastThreeYearsData();
+
+
+
 function drawAllTheYearsChart() {
 				
 			var data = new google.visualization.DataTable();
@@ -611,3 +939,64 @@ function drawMoMTable(data) {
 }			
 
 
+function draw3MAVYOYChart(){
+	
+	var data = new google.visualization.DataTable();
+	data.addColumn('date', "Year");
+	data.addColumn('number', 'YoY for the 3MAV 2004-2014');
+	
+	 var three_MAV_data = new Array();
+	
+	for (i=0; i<data_set.length-2; i++){
+		three_MAV_data[three_MAV_data.length] = [data_set[i+2][0], (data_set[i][1] + data_set[i+1][1] + data_set[i+2][1])/3];
+		
+	}
+	
+	var row_data = new Array;
+	
+	for (i=0, j=12; i<three_MAV_data.length-12, j<three_MAV_data.length; i++, j++){
+		row_data[row_data.length] = [three_MAV_data[j][0], (three_MAV_data[j][1]/three_MAV_data[i][1])-1];
+	
+	}
+	
+	data.addRows(row_data);
+	
+	var options = {'title':'3MAV 2004-2014',
+                     'width':1000,
+                     'height':500};
+
+			var chart = new google.charts.Line(document.getElementById('3MAV_YOY_chart'));
+			chart.draw(data, options);
+	
+}
+
+function drawSeaonalLookBackTotalChart(){
+	
+	var data = new google.visualization.DataTable();
+	data.addColumn('date', "Year");
+	data.addColumn('number', ' 2004-2014');
+	
+	 var three_MAV_data = new Array();
+	
+	for (i=0; i<data_set.length-2; i++){
+		three_MAV_data[three_MAV_data.length] = [data_set[i+2][0], (data_set[i][1] + data_set[i+1][1] + data_set[i+2][1])/3];
+		
+	}
+	
+	var row_data = new Array;
+	
+	for (i=0, j=12; i<three_MAV_data.length-12, j<three_MAV_data.length; i++, j++){
+		row_data[row_data.length] = [three_MAV_data[j][0], (three_MAV_data[j][1]/three_MAV_data[i][1])-1];
+	
+	}
+	
+	data.addRows(row_data);
+	
+	var options = {'title':'3MAV 2004-2014',
+                     'width':1000,
+                     'height':500};
+
+			var chart = new google.charts.Line(document.getElementById('3MAV_YOY_chart'));
+			chart.draw(data, options);
+	
+}
