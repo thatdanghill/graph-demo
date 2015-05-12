@@ -666,6 +666,26 @@ function attachHandlers() {
 	$("#tab-toggle-mom").click(function(){
 		$('#mom-table-wrap').toggle("slow");
 	});
+	
+	$("#tab-toggle-qoq").click(function(){
+		$('#qoq-table-wrap').toggle("slow");
+	});
+	
+	$("#tab-toggle-mav").click(function(){
+		$('#mav-table-wrap').toggle("slow");
+	});
+	
+	$("#tab-toggle-mav-yoy").click(function(){
+		$('#mav-yoy-table-wrap').toggle("slow");
+	});
+	
+	$("#tab-toggle-mth").click(function(){
+		$('#mth-table-wrap').toggle("slow");
+	});
+	
+	$("#tab-toggle-mom-mth").click(function(){
+		$('#mom-mth-table-wrap').toggle("slow");
+	});
 }
 
 function drawChronologyChart(){
@@ -799,8 +819,50 @@ var data = new google.visualization.DataTable();
 
 			var chart = new google.charts.Line(document.getElementById('QoQ_chart'));
 			chart.draw(data, options);
+			drawQOQTable(data);
 			
 			}
+			
+function drawQOQTable(data) {
+	var data2 = new google.visualization.DataTable();
+	data2.addColumn('string','Month');
+	data2.addColumn('number', 2004);
+	data2.addColumn('number', 2005);
+	data2.addColumn('number', 2006);
+	data2.addColumn('number', 2007);
+	data2.addColumn('number', 2008);
+	data2.addColumn('number', 2009);
+	data2.addColumn('number', 2010);
+	data2.addColumn('number', 2011);
+	data2.addColumn('number', 2012);
+	data2.addColumn('number', 2013);
+	data2.addRows(12);
+	data2.setFormattedValue(0,0,"Jan");
+	data2.setFormattedValue(1,0,"Feb");
+	data2.setFormattedValue(2,0,"Mar");
+	data2.setFormattedValue(3,0,"Apr");
+	data2.setFormattedValue(4,0,"May");
+	data2.setFormattedValue(5,0,"Jun");
+	data2.setFormattedValue(6,0,"Jul");
+	data2.setFormattedValue(7,0,"Aug");
+	data2.setFormattedValue(8,0,"Sep");
+	data2.setFormattedValue(9,0,"Oct");
+	data2.setFormattedValue(10,0,"Nov");
+	data2.setFormattedValue(11,0,"Dec");
+	for (var row = 5; row < 12; row++) {
+		data2.setFormattedValue(row,1,parseFloat(data.getFormattedValue(row-5,1)).toFixed(3).toString());
+	}
+	for (var col = 2; col < 11; col++) {
+		for (var row = 0; row < 12; row++) {
+			data2.setFormattedValue(row,col,parseFloat(data.getFormattedValue((col-1)*12-5+row,1)).toFixed(3).toString());
+		}
+	}
+
+	var table = new google.visualization.Table(document.getElementById('qoq-table'));
+
+    table.draw(data2, {showRowNumber: true});
+    $('#qoq-table-wrap').hide();
+}
 			
 			
 function draw12MTHRollingChart(){
@@ -829,7 +891,47 @@ function draw12MTHRollingChart(){
 
 			var chart = new google.charts.Line(document.getElementById('12_mth_rolling_chart'));
 			chart.draw(data, options);
+			draw12MTHRollingTable(data);
 }	
+
+function draw12MTHRollingTable(data) {
+	var data2 = new google.visualization.DataTable();
+	data2.addColumn('string','Month');
+	data2.addColumn('number', 2005);
+	data2.addColumn('number', 2006);
+	data2.addColumn('number', 2007);
+	data2.addColumn('number', 2008);
+	data2.addColumn('number', 2009);
+	data2.addColumn('number', 2010);
+	data2.addColumn('number', 2011);
+	data2.addColumn('number', 2012);
+	data2.addColumn('number', 2013);
+	data2.addColumn('number', 2014);
+	data2.addRows(12);
+	data2.setFormattedValue(0,0,"Jan");
+	data2.setFormattedValue(1,0,"Feb");
+	data2.setFormattedValue(2,0,"Mar");
+	data2.setFormattedValue(3,0,"Apr");
+	data2.setFormattedValue(4,0,"May");
+	data2.setFormattedValue(5,0,"Jun");
+	data2.setFormattedValue(6,0,"Jul");
+	data2.setFormattedValue(7,0,"Aug");
+	data2.setFormattedValue(8,0,"Sep");
+	data2.setFormattedValue(9,0,"Oct");
+	data2.setFormattedValue(10,0,"Nov");
+	data2.setFormattedValue(11,0,"Dec");
+	for (var col = 1; col < 11; col++) {
+		for (var row = 0; row < 12; row++) {
+			data2.setFormattedValue(row,col,data.getFormattedValue((col-1)*12+row,1));
+		}
+	}
+
+
+	var table = new google.visualization.Table(document.getElementById('mth-table'));
+
+    table.draw(data2, {showRowNumber: true});
+    $('#mth-table-wrap').hide();
+}
 	
 function drawMOM12MTHRollingChart() {
 	var data = new google.visualization.DataTable();
@@ -864,9 +966,51 @@ function drawMOM12MTHRollingChart() {
 
 			var chart = new google.charts.Line(document.getElementById('mom_12_mth_rolling_chart'));
 			chart.draw(data, options);
+	drawMOM12MTHRollingTable(data);
 	
 	
-	
+}
+
+function drawMOM12MTHRollingTable(data) {
+	var data2 = new google.visualization.DataTable();
+	data2.addColumn('string','Month');
+	data2.addColumn('number', 2004);
+	data2.addColumn('number', 2005);
+	data2.addColumn('number', 2006);
+	data2.addColumn('number', 2007);
+	data2.addColumn('number', 2008);
+	data2.addColumn('number', 2009);
+	data2.addColumn('number', 2010);
+	data2.addColumn('number', 2011);
+	data2.addColumn('number', 2012);
+	data2.addColumn('number', 2013);
+	data2.addRows(12);
+	data2.setFormattedValue(0,0,"Jan");
+	data2.setFormattedValue(1,0,"Feb");
+	data2.setFormattedValue(2,0,"Mar");
+	data2.setFormattedValue(3,0,"Apr");
+	data2.setFormattedValue(4,0,"May");
+	data2.setFormattedValue(5,0,"Jun");
+	data2.setFormattedValue(6,0,"Jul");
+	data2.setFormattedValue(7,0,"Aug");
+	data2.setFormattedValue(8,0,"Sep");
+	data2.setFormattedValue(9,0,"Oct");
+	data2.setFormattedValue(10,0,"Nov");
+	data2.setFormattedValue(11,0,"Dec");
+	for (var row = 1; row < 12; row++) {
+		data2.setFormattedValue(row,1,parseFloat(data.getFormattedValue(row-1,1)).toFixed(3).toString());
+	}
+	for (var col = 2; col < 11; col++) {
+		for (var row = 0; row < 12; row++) {
+			data2.setFormattedValue(row,col,parseFloat(data.getFormattedValue((col-1)*12-1+row,1)).toFixed(3).toString());
+		}
+	}
+
+
+	var table = new google.visualization.Table(document.getElementById('mom-mth-table'));
+
+    table.draw(data2, {showRowNumber: true});
+    $('#mom-mth-table-wrap').hide();
 }	
 
 function draw3MAVChart(){
@@ -896,10 +1040,53 @@ function draw3MAVChart(){
 			chart.draw(data, options);
 	
 	
-	
+	draw3MAVTable(data);
 
 	
-}		
+}	
+
+function draw3MAVTable(data) {
+	var data2 = new google.visualization.DataTable();
+	data2.addColumn('string','Month');
+	data2.addColumn('number', 2004);
+	data2.addColumn('number', 2005);
+	data2.addColumn('number', 2006);
+	data2.addColumn('number', 2007);
+	data2.addColumn('number', 2008);
+	data2.addColumn('number', 2009);
+	data2.addColumn('number', 2010);
+	data2.addColumn('number', 2011);
+	data2.addColumn('number', 2012);
+	data2.addColumn('number', 2013);
+	data2.addColumn('number', 2014);
+	data2.addRows(12);
+	data2.setFormattedValue(0,0,"Jan");
+	data2.setFormattedValue(1,0,"Feb");
+	data2.setFormattedValue(2,0,"Mar");
+	data2.setFormattedValue(3,0,"Apr");
+	data2.setFormattedValue(4,0,"May");
+	data2.setFormattedValue(5,0,"Jun");
+	data2.setFormattedValue(6,0,"Jul");
+	data2.setFormattedValue(7,0,"Aug");
+	data2.setFormattedValue(8,0,"Sep");
+	data2.setFormattedValue(9,0,"Oct");
+	data2.setFormattedValue(10,0,"Nov");
+	data2.setFormattedValue(11,0,"Dec");
+	for (var row = 2; row < 12; row++) {
+		data2.setFormattedValue(row,1,parseFloat(data.getFormattedValue(row-2,1)).toFixed(0).toString());
+	}
+	for (var col = 2; col < 12; col++) {
+		for (var row = 0; row < 12; row++) {
+			data2.setFormattedValue(row,col,parseFloat(data.getFormattedValue((col-1)*12-2+row,1)).toFixed(0).toString());
+		}
+	}
+
+
+	var table = new google.visualization.Table(document.getElementById('mav-table'));
+
+    table.draw(data2, {showRowNumber: true});
+    $('#mav-table-wrap').hide();
+}
 
 function drawMoMTable(data) {
 	var data2 = new google.visualization.DataTable();
@@ -962,12 +1149,56 @@ function draw3MAVYOYChart(){
 	data.addRows(row_data);
 	
 	var options = {'title':'3MAV 2004-2014',
-                     'width':1000,
-                     'height':500};
+		'height' : 750,
+		'chartArea.width' : 700,
+		'chartArea.height' : 500,
+		'legend': {position: 'none'}};
 
 			var chart = new google.charts.Line(document.getElementById('3MAV_YOY_chart'));
 			chart.draw(data, options);
+			draw3MAVYOYTable(data);
 	
+}
+
+function draw3MAVYOYTable(data) {
+	var data2 = new google.visualization.DataTable();
+	data2.addColumn('string','Month');
+	data2.addColumn('number', 2005);
+	data2.addColumn('number', 2006);
+	data2.addColumn('number', 2007);
+	data2.addColumn('number', 2008);
+	data2.addColumn('number', 2009);
+	data2.addColumn('number', 2010);
+	data2.addColumn('number', 2011);
+	data2.addColumn('number', 2012);
+	data2.addColumn('number', 2013);
+	data2.addColumn('number', 2014);
+	data2.addRows(12);
+	data2.setFormattedValue(0,0,"Jan");
+	data2.setFormattedValue(1,0,"Feb");
+	data2.setFormattedValue(2,0,"Mar");
+	data2.setFormattedValue(3,0,"Apr");
+	data2.setFormattedValue(4,0,"May");
+	data2.setFormattedValue(5,0,"Jun");
+	data2.setFormattedValue(6,0,"Jul");
+	data2.setFormattedValue(7,0,"Aug");
+	data2.setFormattedValue(8,0,"Sep");
+	data2.setFormattedValue(9,0,"Oct");
+	data2.setFormattedValue(10,0,"Nov");
+	data2.setFormattedValue(11,0,"Dec");
+	for (var row = 2; row < 12; row++) {
+		data2.setFormattedValue(row,1,parseFloat(data.getFormattedValue(row-2,1)).toFixed(3).toString());
+	}
+	for (var col = 2; col < 11; col++) {
+		for (var row = 0; row < 12; row++) {
+			data2.setFormattedValue(row,col,parseFloat(data.getFormattedValue((col-1)*12-2+row,1)).toFixed(3).toString());
+		}
+	}
+
+	var table = new google.visualization.Table(document.getElementById('mav-yoy-table'));
+
+    table.draw(data2, {showRowNumber: true});
+    $('#mav-yoy-table-wrap').hide();
 }
 
 function drawSeaonalLookBackTotalChart(){
@@ -993,10 +1224,18 @@ function drawSeaonalLookBackTotalChart(){
 	data.addRows(row_data);
 	
 	var options = {'title':'3MAV 2004-2014',
-                     'width':1000,
-                     'height':500};
+		'height' : 750,
+		'chartArea.width' : 700,
+		'chartArea.height' : 500,
+		'legend': {position: 'none'}};
 
 			var chart = new google.charts.Line(document.getElementById('3MAV_YOY_chart'));
 			chart.draw(data, options);
+			drawSeaonalLookBackTotalTable(data);
+	
+}
+
+function drawSeaonalLookBackTotalTable(data) {
+	//!!!
 	
 }
