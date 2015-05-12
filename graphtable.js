@@ -342,7 +342,7 @@ function drawChronologyChart(){
 	
 	var data = new google.visualization.DataTable();
 	data.addColumn('date', "Year")
-	data.addColumn('number', "Total Passenger Volume")	
+	data.addColumn('number', "Total Passenger Volume (2004-2014)")	
 	data.addRows(data_set);
 	
 	var options = {'title':'Total Passenger Volume 2004-2014',
@@ -361,7 +361,7 @@ function drawChronologyChart(){
 function drawIndexChart(){
 	var data = new google.visualization.DataTable();
 	data.addColumn('date', "Year");
-	data.addColumn('number', 'Index trend from Janury 2004');
+	data.addColumn('number', 'Indexed Passenger Volume (2004-2014)');
 	var row_data = new Array();
 	var first_term = data_set[0][1];
 	for (i=0; i<data_set.length; i++){
@@ -406,11 +406,11 @@ function drawMOMChart(){
 	
 	var data = new google.visualization.DataTable();
 	data.addColumn('date', "Year");
-	data.addColumn('number', 'MoM trend from Janury 2004');
+	data.addColumn('number', 'MoM 2004-2014');
 	var row_data = new Array();
 	
-	for (i=0; i<data_set.length-12; i++){
-		row_data[row_data.length] = [data_set[i][0], (data_set[i+1][1]/data_set[i][1])-1];
+	for (i=0; i<data_set.length-1; i++){
+		row_data[row_data.length] = [data_set[i+1][0], (data_set[i+1][1]/data_set[i][1])-1];
 		
 	}
 	
@@ -424,7 +424,129 @@ function drawMOMChart(){
 			chart.draw(data, options);
 			drawMoMTable(data);
 }
+
+function drawQOQChart(){
 	
+var data = new google.visualization.DataTable();
+	data.addColumn('date', "Year");
+	data.addColumn('number', 'QoQ trend 2004-2014');
+	var row_data = new Array();
+	var Q1; 
+	var Q2;
+	var QoQ;
+	
+	
+	for (i=0; i<data_set.length-5; i++){
+		
+		Q1 = (data_set[i][1] + data_set[i+1][1] + data_set[i+2][1])/3;
+		Q2 = (data_set[i+3][1] + data_set[i+4][1] + data_set[i+5][1])/3;
+		QoQ = Q2/Q1 - 1;
+		
+		row_data[row_data.length] = [data_set[i+5][0], QoQ];
+	}
+	
+
+	data.addRows(row_data);
+	
+	var options = {'title':'Passenger Quarter on Quarter 2004-2014',
+                     'width':1000,
+                     'height':500};
+
+			var chart = new google.charts.Line(document.getElementById('QoQ_chart'));
+			chart.draw(data, options);
+			
+			}
+			
+			
+function draw12MTHRollingChart(){
+	
+	var data = new google.visualization.DataTable();
+	data.addColumn('date', "Year");
+	data.addColumn('number', '12 Month Rolling 2004-2014');
+	var row_data = new Array();
+	
+	
+	
+	for (i=0; i<data_set.length-12; i++){
+		
+		row_data[row_data.length] = [data_set[i+12][0], (data_set[i+1][1] + data_set[i+2][1] + data_set[i+3][1] + 
+										data_set[i+4][1] + data_set[i+5][1] + data_set[i+6][1] + data_set[i+7][1] + data_set[i+8][1] + data_set[i+9][1] + data_set[i+10][1] + data_set[i+11][1] + data_set[i+12][1])];
+	}
+	
+	data.addRows(row_data);
+	
+	var options = {'title':'12 Month Rolling 2004-2014',
+                     'width':1000,
+                     'height':500};
+
+			var chart = new google.charts.Line(document.getElementById('12_mth_rolling_chart'));
+			chart.draw(data, options);
+}	
+	
+function drawMOM12MTHRollingChart() {
+	var data = new google.visualization.DataTable();
+	data.addColumn('date', "Year");
+	data.addColumn('number', 'MoM for the 12 Month Rolling 2004-2014');
+	var twelve_mth_data = new Array();
+	
+	
+	
+	for (i=0; i<data_set.length-12; i++){
+		
+		twelve_mth_data[twelve_mth_data.length] = [data_set[i+12][0], (data_set[i+1][1] + data_set[i+2][1] + data_set[i+3][1] + 
+										data_set[i+4][1] + data_set[i+5][1] + data_set[i+6][1] + data_set[i+7][1] + data_set[i+8][1] + data_set[i+9][1] + data_set[i+10][1] + data_set[i+11][1] + data_set[i+12][1])];
+	}
+	 var row_data = new Array();
+	
+	for (i=0; i<twelve_mth_data.length-1; i++){
+		row_data[row_data.length] = [data_set[i+1][0], (data_set[i+1][1]/data_set[i][1])-1];
+		
+	}
+	
+	
+	
+	data.addRows(row_data);
+	
+	var options = {'title':'MoM for the 12 Month Rolling 2004-2014',
+                     'width':1000,
+                     'height':500};
+
+			var chart = new google.charts.Line(document.getElementById('mom_12_mth_rolling_chart'));
+			chart.draw(data, options);
+	
+	
+	
+}	
+
+function draw3MAVChart(){
+	var data = new google.visualization.DataTable();
+	data.addColumn('date', "Year");
+	data.addColumn('number', '3MAV 2004-2014');
+	
+	 var row_data = new Array();
+	
+	for (i=0; i<data_set.length-2; i++){
+		row_data[row_data.length] = [data_set[i+2][0], (data_set[i][1] + data_set[i+1][1] + data_set[i+2][1])/3];
+		
+	}
+	
+	
+	
+	data.addRows(row_data);
+	
+	var options = {'title':'3MAV 2004-2014',
+                     'width':1000,
+                     'height':500};
+
+			var chart = new google.charts.Line(document.getElementById('3MAV_chart'));
+			chart.draw(data, options);
+	
+	
+	
+
+	
+}		
+
 function drawMoMTable(data) {
 	var data2 = new google.visualization.DataTable();
 	data2.addColumn('string','Month');
@@ -461,4 +583,5 @@ function drawMoMTable(data) {
     table.draw(data2, {showRowNumber: true});
     $('#mom-table-wrap').hide();
 }			
+
 
