@@ -21,12 +21,20 @@
 			google.setOnLoadCallback(drawImpliedFullYearBKWRDTotalAvgChart);
 			google.setOnLoadCallback(drawImpliedFullYearBKWRDLastThreeYearsAvgChart);
 			google.setOnLoadCallback(drawImpliedFullYearFRWRDTotalAvgChart);
+			google.setOnLoadCallback(drawImpliedFullYearFRWRDLastThreeYearsAvgChart);
+			google.setOnLoadCallback(drawMOMImpliedFullYearBKWRDTotalAvgChart);
+			google.setOnLoadCallback(drawMOMImpliedFullYearBKWRDLastThreeYearsAvgChart);
+			google.setOnLoadCallback(drawMOMImpliedFullYearFRWRDTotalAvgChart);
+			google.setOnLoadCallback(drawMOMImpliedFullYearFRWRDLastThreeYearsAvgChart);
+			google.setOnLoadCallback(draw3MAV12MTHRollingChart);
+			google.setOnLoadCallback(draw3MAVYOY12MTHRollingChart);
 			
 			
 			$(document).ready(function(){
 				attachHandlers();
 				console.log(past_snl_data_ttl_avg);
 				console.log(past_snl_data_lst_three_years);
+				console.log(ftr_snl_data);
 				console.log(ftr_snl_data_ttl_avg);
 				
 				
@@ -123,9 +131,16 @@
 				<div id="mth-table" display=none></div>
 			</div>
 			
+			<br>
+			<h1 style="display: inline-block;"> MoM based on 12 Month Rolling 2004-2014 (RAW)</h1>
+			<button id="tab-toggle-mom-mth" style="display: inline-block;"> Tab View </button>
+			<div id="mom_12_mth_rolling_chart" width='2000' height='700'></div>
+			<div id="mom-mth-table-wrap" display=none>
+				<div id="mom-mth-table" display=none></div>
+			</div>
+			
 			
 			<br>
-
 			<h1 style="display: inline-block;"> Implied Full Year based on Total Past Seasonality Average</h1>
 			<button id="tab-toggle-yoy" style="display: inline-block;"> Tab View </button>
 			<div id="Implied_Full_Year_BKWRD_Total_Avg_Chart"></div>
@@ -140,15 +155,48 @@
 			<button id="tab-toggle-yoy" style="display: inline-block;"> Tab View </button>
 			<div id="Implied_Full_Year_FRWRD_Total_Avg_Chart"></div>
 			
-
-
+			<br>
+			<h1 style="display: inline-block;"> Implied Full Year based on Last Three Years Future Seasonality Average</h1>
+			<button id="tab-toggle-yoy" style="display: inline-block;"> Tab View </button>
+			<div id="Implied_Full_Year_FRWRD_Last_Three_Years_Avg_Chart"></div>
 			
-			<h1 style="display: inline-block;"> MoM based on 12 Month Rolling 2004-2014 (RAW)</h1>
-			<button id="tab-toggle-mom-mth" style="display: inline-block;"> Tab View </button>
-			<div id="mom_12_mth_rolling_chart" width='2000' height='700'></div>
-			<div id="mom-mth-table-wrap" display=none>
-				<div id="mom-mth-table" display=none></div>
+			<br>
+			<h1 style="display: inline-block;"> MoM for the Implied Full Year based on Total Past Seasonality Average</h1>
+			<button id="tab-toggle-yoy" style="display: inline-block;"> Tab View </button>
+			<div id="MoM_Implied_Full_Year_BKWRD_Total_Avg_Chart"></div>
+			
+				<br>
+			<h1 style="display: inline-block;"> MoM for the Implied Full Year based on Last Three Years Past Seasonality Average</h1>
+			<button id="tab-toggle-yoy" style="display: inline-block;"> Tab View </button>
+			<div id="MoM_Implied_Full_Year_BKWRD_Last_Three_Years_Avg_Chart"></div>
+			
+			<br>
+			<h1 style="display: inline-block;"> MoM for the Implied Full Year based on Total Future Seasonality Average</h1>
+			<button id="tab-toggle-yoy" style="display: inline-block;"> Tab View </button>
+			<div id="MoM_Implied_Full_Year_FRWRD_Total_Avg_Chart"></div>
+
+			<br>
+			<h1 style="display: inline-block;"> MoM for the Implied Full Year based on Last Three Years Future Seasonality Average</h1>
+			<button id="tab-toggle-yoy" style="display: inline-block;"> Tab View </button>
+			<div id="MoM_Implied_Full_Year_FRWRD_Last_Three_Years_Avg_Chart"></div>
+
+			<br>
+			<h1 style="display: inline-block;"> 3MAV on the 12 Month Rolling 2004-2014 </h1>
+			<button id="tab-toggle-mth" style="display: inline-block;"> Tab View </button>
+			<div id="3MAV_12_mth_rolling_chart" width='2000' height='700'></div>
+			<div id="mth-table-wrap" display=none>
+				<div id="mth-table" display=none></div>
 			</div>
+			
+			<br>
+			<h1 style="display: inline-block;"> YoY for the 3MAV on the 12 Month Rolling 2004-2014 </h1>
+			<button id="tab-toggle-mth" style="display: inline-block;"> Tab View </button>
+			<div id="3MAV_YOY_12_mth_rolling_chart" width='2000' height='700'></div>
+			<div id="mth-table-wrap" display=none>
+				<div id="mth-table" display=none></div>
+			</div>
+			
+							
 
 
 		</div>
