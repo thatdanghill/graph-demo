@@ -7,9 +7,10 @@
 		<script type="text/javascript" src="jquery-1.11.3.min.js"> </script>
 		<script type="text/javascript" src="graphtable.js"></script>
 		<script type="text/javascript">
+		
 			google.load('visualization', '1.0', {packages:['line', 'table']});
-			google.setOnLoadCallback(drawAllTheYearsChart);
 			google.setOnLoadCallback(drawChronologyChart);
+			google.setOnLoadCallback(drawAllTheYearsChart);
 			google.setOnLoadCallback(drawIndexChart);
 			google.setOnLoadCallback(drawYOYChart);
 			google.setOnLoadCallback(drawMOMChart);
@@ -29,33 +30,66 @@
 			google.setOnLoadCallback(draw3MAV12MTHRollingChart);
 			google.setOnLoadCallback(draw3MAVYOY12MTHRollingChart);
 			
-			
-			$(document).ready(function(){
-				$('#westjet').hide();
-				$('#klm').hide();
-				attachHandlers();
-			});
-		</script>
+			function setUp() {
+			$('#graph-choices').hide();
+			$('.subgraph').hide();
+			$('#westjet').hide();
+			$('#klm').hide();
+			attachHandlers();
+			}
+			</script>
 	</head>
-	<body>
+	<body onload="setUp()">
 		<div id="header" height="100">
-			<select id="airline">
+			<select id="airline" style="display: inline-block;">
 				<option value="easyjet">easyJet</option>
 				 <option value="westjet">Westjet</option>
 				 <option value="klm">KLM</option>
 			</select> 
+			<button id="generator" style="display: inline-block;">Generate graphs</button>
+			<div id="graph-choices" style="background-color: #BACCD0;">				
+				<form action="">
+					<input type="checkbox" name="graph" value="all-year">Passenger Volume per Year 2004-2014 (RAW)<br>
+					<input type="checkbox" name="graph" value="index">Indexed Passenger Volume 2004-2014 (RAW)
+					<br>
+					<input type="checkbox" name="graph" value="yoy">YoY 2004-2014 (RAW)
+					<br>
+					<input type="checkbox" name="graph" value="mom">MoM 2004-2014 (RAW)
+					<br>
+					<input type="checkbox" name="graph" value="qoq">QoQ 2004-2014 (RAW)
+					<br>
+					<input type="checkbox" name="graph" value="mav">3MAV 2004-2014 (RAW)
+					<br>
+					<input type="checkbox" name="graph" value="mav-yoy">YoY for the 3MAV 2004-2014 (RAW)
+					<br>
+					<input type="checkbox" name="graph" value="mth">12 Month Rolling 2004-2014 (RAW)
+					<br>
+					<input type="checkbox" name="graph" value="mom-mth">MoM based on 12 Month Rolling 2004-2014 (RAW)
+					<br>
+					<input type="checkbox" name="graph" value="imptot">Implied Full Year based on Total Past Seasonality Average
+					<br>
+					<input type="checkbox" name="graph" value="imp3">Implied Full Year based on Last Three Years Past Seasonality Average
+					<br>
+					<input type="checkbox" name="graph" value="tot-fut">Implied Full Year based on Total Future Seasonality Average
+					<br>
+					<input type="checkbox" name="graph" value="3fut">Implied Full Year based on Last Three Years Future Seasonality Average
+					<br>
+					<input type="checkbox" name="graph" value="mom-past">MoM for the Implied Full Year based on Total Past Seasonality Average
+					<br>
+					<input type="checkbox" name="graph" value="3mom">MoM for the Implied Full Year based on Last Three Years Past Seasonality Average
+					<br>
+					<input type="checkbox" name="graph" value="mom-fut">MoM for the Implied Full Year based on Total Future Seasonality Average
+					<br>
+					<input type="checkbox" name="graph" value="3mom-fut">MoM for the Implied Full Year based on Last Three Years Future Seasonality Average
+					<br>
+					<input type="checkbox" name="graph" value="3mav12">3MAV on the 12 Month Rolling 2004-2014
+					<br>
+					<input type="checkbox" name="graph" value="yoy3mav12">YoY for the 3MAV on the 12 Month Rolling 2004-2014
+				</form>
+				
+			</div>
 		</div>
 		<div id="easyjet" display='none'>
-			<h1 style="display: inline-block;"> Passenger Volume per Year 2004-2014 (RAW)</h1>
-			<button id="tab-toggle-all" style="display: inline-block;"> Tab View </button>
-			<div id="All_the_years_chart" width='2000' height='700'></div>
-			<div id="all-year-table-wrap" display=none>
-				<button id="up-butt" style="display:inline-block;">Move up</button>
-				<button id="down-butt" style="display:inline-block;">Move down</button>
-				<div id="all-year-table" display=none></div>
-			</div>
-			
-			<br>
 			
 			<h1 style="display: inline-block;">Total Passenger Volume 2004-2014 (RAW) </h1>
 			<button id="tab-toggle-chron" style="display: inline-block;"> Tab View </button>
@@ -64,170 +98,231 @@
 				<div id="chron-table" display=none></div>
 			</div>
 			
+			
 			<br>
 			
+			<div class="subgraph" id="all-year" display=none>
+				<h1 style="display: inline-block;"> Passenger Volume per Year 2004-2014 (RAW)</h1>
+				<button id="tab-toggle-all" style="display: inline-block;"> Tab View </button>
+				<div id="All_the_years_chart" width='2000' height='700'></div>
+				<div id="all-year-table-wrap" display=none>
+					<button id="up-butt" style="display:inline-block;">Move up</button>
+					<button id="down-butt" style="display:inline-block;">Move down</button>
+					<div id="all-year-table" display=none></div>
+				</div>
+			</div>
+			
+			<br>
+			
+			<div class="subgraph" id="index" display=none>
 			<h1 style="display: inline-block;"> Indexed Passenger Volume 2004-2014 (RAW)</h1>
 			<button id="tab-toggle-index" style="display: inline-block;"> Tab View </button>
 			<div id="Index_chart" width='2000' height='700'></div>
 			<div id="index-table-wrap" display=none>
 				<div id="index-table" display=none></div>
 			</div>
+			</div>
 			
 			<br>
 			
+			<div class="subgraph" id="yoy" display=none>
 			<h1 style="display: inline-block;"> YoY 2004-2014 (RAW)</h1>
 			<button id="tab-toggle-yoy" style="display: inline-block;"> Tab View </button>
 			<div id="YoY_chart" width='2000' height='700'></div>
 			<div id="yoy-table-wrap" display=none>
 				<div id="yoy-table" display=none></div>
 			</div>
+			</div>
 			
 			<br>
 			
+			<div class="subgraph" id="mom" display=none>
 			<h1 style="display: inline-block;"> MoM 2004-2014 (RAW)</h1>
 			<button id="tab-toggle-mom" style="display: inline-block;"> Tab View </button>
 			<div id="MoM_chart" width='2000' height='700'></div>
 			<div id="mom-table-wrap" display=none>
 				<div id="mom-table" display=none></div>
 			</div>
+			</div>
 			
 			<br>
 			
+			<div class="subgraph" id="qoq" display=none>
 			<h1 style="display: inline-block;"> QoQ 2004-2014 (RAW)</h1>
 			<button id="tab-toggle-qoq" style="display: inline-block;"> Tab View </button>
 			<div id="QoQ_chart" width='2000' height='700'></div>
 			<div id="qoq-table-wrap" display=none>
 				<div id="qoq-table" display=none></div>
 			</div>
+			</div>
 			
 			<br>
 			
+			<div class="subgraph" id="mav" display=none>
 			<h1 style="display: inline-block;"> 3MAV 2004-2014 (RAW)</h1>
 			<button id="tab-toggle-mav" style="display: inline-block;"> Tab View </button>
 			<div id="3MAV_chart" width='2000' height='700'></div>
 			<div id="mav-table-wrap" display=none>
 				<div id="mav-table" display=none></div>
 			</div>
+			</div>
 			
 			<br>
 			
+			<div class="subgraph" id="mav-yoy" display=none>
 			<h1 style="display: inline-block;"> YoY for the 3MAV 2004-2014 (RAW)</h1>
 			<button id="tab-toggle-mav-yoy" style="display: inline-block;"> Tab View </button>
 			<div id="3MAV_YOY_chart" width='2000' height='700'></div>
 			<div id="mav-yoy-table-wrap" display=none>
 				<div id="mav-yoy-table" display=none></div>
 			</div>
+			</div>
 			
 			<br>
 			
+			<div class="subgraph" id="mth" display=none>
 			<h1 style="display: inline-block;"> 12 Month Rolling 2004-2014 (RAW)</h1>
 			<button id="tab-toggle-mth" style="display: inline-block;"> Tab View </button>
 			<div id="12_mth_rolling_chart" width='2000' height='700'></div>
 			<div id="mth-table-wrap" display=none>
 				<div id="mth-table" display=none></div>
 			</div>
+			</div>
 			
 			<br>
+			
+			<div class="subgraph" id="mom-mth" display=none>
 			<h1 style="display: inline-block;"> MoM based on 12 Month Rolling 2004-2014 (RAW)</h1>
 			<button id="tab-toggle-mom-mth" style="display: inline-block;"> Tab View </button>
 			<div id="mom_12_mth_rolling_chart" width='2000' height='700'></div>
 			<div id="mom-mth-table-wrap" display=none>
 				<div id="mom-mth-table" display=none></div>
 			</div>
+			</div>
 			
 			
 			<br>
+			
+			<div class="subgraph" id="imptot" display=none>
 			<h1 style="display: inline-block;"> Implied Full Year based on Total Past Seasonality Average</h1>
 			<button id="tab-toggle-imptot" style="display: inline-block;"> Tab View </button>
 			<div id="Implied_Full_Year_BKWRD_Total_Avg_Chart" width='2000' height='700'></div>
 			<div id="imptot-table-wrap" display=none>
 				<div id="imptot-table" display=none></div>
 			</div>
+			</div>
 			
 			<br>
+			
+			<div class="subgraph" id="imp3" display=none>
 			<h1 style="display: inline-block;"> Implied Full Year based on Last Three Years Past Seasonality Average</h1>
 			<button id="tab-toggle-imp3" style="display: inline-block;"> Tab View </button>
 			<div id="Implied_Full_Year_BKWRD_Last_Three_Years_Avg_Chart" width='2000' height='700'></div>
 			<div id="imp3-table-wrap" display=none>
 				<div id="imp3-table" display=none></div>
 			</div>
+			</div>
 			
 			<br>
+			
+			<div class="subgraph" id="tot-fut" display=none>
 			<h1 style="display: inline-block;"> Implied Full Year based on Total Future Seasonality Average</h1>
 			<button id="tab-toggle-tot-fut" style="display: inline-block;"> Tab View </button>
 			<div id="Implied_Full_Year_FRWRD_Total_Avg_Chart" width='2000' height='700'></div>
 			<div id="tot-fut-table-wrap" display=none>
 				<div id="tot-fut-table" display=none></div>
 			</div>
+			</div>
 			
 			<br>
+			
+			<div class="subgraph" id="3fut" display=none>
 			<h1 style="display: inline-block;"> Implied Full Year based on Last Three Years Future Seasonality Average</h1>
 			<button id="tab-toggle-3fut" style="display: inline-block;"> Tab View </button>
 			<div id="Implied_Full_Year_FRWRD_Last_Three_Years_Avg_Chart" width='2000' height='700'></div>
 			<div id="3fut-table-wrap" display=none>
 				<div id="3fut-table" display=none></div>
 			</div>
+			</div>
 			
 			<br>
+			
+			<div class="subgraph" id="mom-past" display=none>
 			<h1 style="display: inline-block;"> MoM for the Implied Full Year based on Total Past Seasonality Average</h1>
 			<button id="tab-toggle-mom-past" style="display: inline-block;"> Tab View </button>
 			<div id="MoM_Implied_Full_Year_BKWRD_Total_Avg_Chart" width='2000' height='700'></div>
 			<div id="mom-past-table-wrap" display=none>
 				<div id="mom-past-table" display=none></div>
 			</div>
+			</div>
 			
-				<br>
+			<br>
+			
+			<div class="subgraph" id="3mom" display=none>
 			<h1 style="display: inline-block;"> MoM for the Implied Full Year based on Last Three Years Past Seasonality Average</h1>
 			<button id="tab-toggle-3mom" style="display: inline-block;"> Tab View </button>
 			<div id="MoM_Implied_Full_Year_BKWRD_Last_Three_Years_Avg_Chart" width='2000' height='700'></div>
 			<div id="3mom-table-wrap" display=none>
 				<div id="3mom-table" display=none></div>
 			</div>
+			</div>
 			
 			<br>
+			
+			<div class="subgraph" id="mom-fut" display=none>
 			<h1 style="display: inline-block;"> MoM for the Implied Full Year based on Total Future Seasonality Average</h1>
 			<button id="tab-toggle-mom-fut" style="display: inline-block;"> Tab View </button>
 			<div id="MoM_Implied_Full_Year_FRWRD_Total_Avg_Chart" width='2000' height='700'></div>
 			<div id="mom-fut-table-wrap" display=none>
 				<div id="mom-fut-table" display=none></div>
 			</div>
+			</div>
 			
 
 
 			<br>
+			
+			<div class="subgraph" id="3mom-fut" display=none>
 			<h1 style="display: inline-block;"> MoM for the Implied Full Year based on Last Three Years Future Seasonality Average</h1>
 			<button id="tab-toggle-3mom-fut" style="display: inline-block;"> Tab View </button>
 			<div id="MoM_Implied_Full_Year_FRWRD_Last_Three_Years_Avg_Chart" width='2000' height='700'></div>
 			<div id="3mom-fut-table-wrap" display=none>
 				<div id="3mom-fut-table" display=none></div>
 			</div>
+			</div>
 
 			<br>
+			
+			<div class="subgraph" id="3mav12" display=none>
 			<h1 style="display: inline-block;"> 3MAV on the 12 Month Rolling 2004-2014 </h1>
 			<button id="tab-toggle-3mav12" style="display: inline-block;"> Tab View </button>
 			<div id="3MAV_12_mth_rolling_chart" width='2000' height='700'></div>
 			<div id="3mav12-table-wrap" display=none>
 				<div id="3mav12-table" display=none></div>
 			</div>
+			</div>
 			
 			<br>
+			
+			<div class="subgraph" id="yoy3mav12" display=none>
 			<h1 style="display: inline-block;"> YoY for the 3MAV on the 12 Month Rolling 2004-2014 </h1>
 			<button id="tab-toggle-yoy3mav12" style="display: inline-block;"> Tab View </button>
 			<div id="3MAV_YOY_12_mth_rolling_chart" width='2000' height='700'></div>
 			<div id="yoy3mav12-table-wrap" display=none>
 				<div id="yoy3mav12-table" display=none></div>
 			</div>
+			</div>
 			
 							
 
 
 		</div>
-		<div id="westjet" display="none">
+		<div id="westjet" display=none>
 			<p>
 			Similar graphs here...
 			</p>
 		</div>
-		<div id="klm" display="none">
+		<div id="klm" display=none>
 			<p>
 			Similar graphs here...
 			</p>

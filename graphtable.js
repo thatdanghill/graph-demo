@@ -165,8 +165,6 @@ var data_set = new Array();
 	
 var past_snl_data = getPastSeasonalData();
 	
-	
-	
 function getPastSeasonalTotalAverageData(){
 	
 	var data = new Array;
@@ -516,8 +514,9 @@ function drawAllTheYearsChart() {
 			]);
 			
 			var options = {'title':'Passenger Volume per year (2004-2014)',
+			'width' : 1000,
 		'height' : 750,
-				'chartArea.width' : 700,
+		'chartArea.width' : 700,
 		'chartArea.height' : 500,
 			};
 
@@ -668,6 +667,20 @@ function selectHandler() {
 }
 			
 function attachHandlers() {
+	$('#generator').click(function() {
+		$('#graph-choices').toggle("slow");
+	});
+	
+	$('input:checkbox').change(function() {
+		var str = '#' + $(this).val();
+		if ($(this).prop("checked")) {
+			$(str).show();
+			chooseDraw($(this).val());
+		} else {
+			$(str).hide();
+		}
+	});
+
 	$("#tab-toggle-all").click(function(){
 		$('#all-year-table-wrap').toggle("slow");
 	});
@@ -774,6 +787,7 @@ function drawChronologyChart(){
 	data.addRows(data_set);
 	
 	var options = {'title':'Total Passenger Volume 2004-2014',
+	'width' : 1000,
 		'height' : 750,
 		'chartArea.width' : 700,
 		'chartArea.height' : 500,
@@ -801,6 +815,7 @@ function drawIndexChart(){
 	data.addRows(row_data);
 	
 	var options = {'title':'Total Passenger Index 2004-2014',
+		'width' : 1000,
 		'height' : 750,
 		'chartArea.width' : 700,
 		'chartArea.height' : 500,
@@ -827,6 +842,7 @@ function drawYOYChart(){
 	data.addRows(row_data);
 	
 	var options = {'title':'Passenger Year on Year 2004-2014',
+	'width' : 1000,
 		'height' : 750,
 		'chartArea.width' : 700,
 		'chartArea.height' : 500,
@@ -854,6 +870,7 @@ function drawMOMChart(){
 	data.addRows(row_data);
 	
 	var options = {'title':'Passenger Month on Month 2004-2014',
+	'width' : 1000,
 		'height' : 750,
 		'chartArea.width' : 700,
 		'chartArea.height' : 500,
@@ -890,6 +907,7 @@ var data = new google.visualization.DataTable();
 	
 	var options = {'title':'Passenger Quarter on Quarter 2004-2014',
 		'height' : 750,
+		'width' : 1000,
 		'chartArea.width' : 700,
 		'chartArea.height' : 500,
 		'legend': {position: 'none'}
@@ -961,6 +979,7 @@ function draw12MTHRollingChart(){
 	data.addRows(row_data);
 	
 	var options = {'title':'12 Month Rolling 2004-2014',
+	'width' : 1000,
 		'height' : 750,
 		'chartArea.width' : 700,
 		'chartArea.height' : 500,
@@ -1036,6 +1055,7 @@ function drawMOM12MTHRollingChart() {
 	data.addRows(row_data);
 	
 	var options = {'title':'MoM for the 12 Month Rolling 2004-2014',
+	'width' : 1000,
 		'height' : 750,
 		'chartArea.width' : 700,
 		'chartArea.height' : 500,
@@ -1108,6 +1128,7 @@ function draw3MAVChart(){
 	data.addRows(row_data);
 	
 	var options = {'title':'3MAV 2004-2014',
+	'width' : 1000,
 		'height' : 750,
 		'chartArea.width' : 700,
 		'chartArea.height' : 500,
@@ -1227,6 +1248,7 @@ function draw3MAVYOYChart(){
 	data.addRows(row_data);
 	
 	var options = {'title':'3MAV 2004-2014',
+	'width' : 1000,
 		'height' : 750,
 		'chartArea.width' : 700,
 		'chartArea.height' : 500,
@@ -1339,6 +1361,7 @@ function drawImpliedFullYearBKWRDTotalAvgChart(){
 	data.addRows(row_data);
 	
 	var options = {'title':' 2004-2014',
+	'width' : 1000,
                      'height' : 750,
 				'chartArea.width' : 700,
 		'chartArea.height' : 500,
@@ -1451,6 +1474,7 @@ function drawImpliedFullYearBKWRDLastThreeYearsAvgChart(){
 	
 
 	var options = {'title':'3MAV 2004-2014',
+	'width' : 1000,
 		'height' : 750,
 		'chartArea.width' : 700,
 		'chartArea.height' : 500,
@@ -1560,6 +1584,7 @@ function drawImpliedFullYearFRWRDTotalAvgChart(){
 	data.addRows(row_data);
 	
 	var options = {'title':' 2004-2014',
+	'width' : 1000,
                      'height' : 750,
 				'chartArea.width' : 700,
 		'chartArea.height' : 500,
@@ -1671,6 +1696,7 @@ function drawImpliedFullYearFRWRDLastThreeYearsAvgChart(){
 	
 
 	var options = {'title':'3MAV 2004-2014',
+	'width' : 1000,
 		'height' : 750,
 		'chartArea.width' : 700,
 		'chartArea.height' : 500,
@@ -1787,8 +1813,11 @@ function drawMOMImpliedFullYearBKWRDTotalAvgChart(){
 	
 	
 	var options = {'title':' 2004-2014',
-                     'width':1000,
-                     'height':500};
+	'width' : 1000,
+                     'height' : 750,
+		'chartArea.width' : 700,
+		'chartArea.height' : 500,
+		'legend': {position: 'none'}};
 
 			var chart = new google.charts.Line(document.getElementById('MoM_Implied_Full_Year_BKWRD_Total_Avg_Chart'));
 			chart.draw(data, options);
@@ -1906,6 +1935,7 @@ function drawMOMImpliedFullYearBKWRDLastThreeYearsAvgChart(){
 	
 
 	var options = {'title':'3MAV 2004-2014',
+	'width' : 1000,
 		'height' : 750,
 		'chartArea.width' : 700,
 		'chartArea.height' : 500,
@@ -2023,8 +2053,11 @@ function drawMOMImpliedFullYearFRWRDTotalAvgChart(){
 	data.addRows(row_data);
 	
 	var options = {'title':' 2004-2014',
-                     'width':1000,
-                     'height':500};
+	'width' : 1000,
+                     'height' : 750,
+		'chartArea.width' : 700,
+		'chartArea.height' : 500,
+		'legend': {position: 'none'}};
 
 			var chart = new google.charts.Line(document.getElementById('MoM_Implied_Full_Year_FRWRD_Total_Avg_Chart'));
 			chart.draw(data, options);	
@@ -2140,6 +2173,7 @@ function drawMOMImpliedFullYearFRWRDLastThreeYearsAvgChart(){
 	
 
 	var options = {'title':'3MAV 2004-2014',
+	'width' : 1000,
 		'height' : 750,
 		'chartArea.width' : 700,
 		'chartArea.height' : 500,
@@ -2222,6 +2256,7 @@ function draw3MAV12MTHRollingChart(){
 	data.addRows(row_data);
 	
 	var options = {'title':'12 Month Rolling 2004-2014',
+	'width' : 1000,
 		'height' : 750,
 		'chartArea.width' : 700,
 		'chartArea.height' : 500,
@@ -2306,6 +2341,7 @@ function draw3MAVYOY12MTHRollingChart(){
 	data.addRows(row_data);
 	
 	var options = {'title':'12 Month Rolling 2004-2014',
+	'width' : 1000,
 		'height' : 750,
 		'chartArea.width' : 700,
 		'chartArea.height' : 500,
@@ -2321,8 +2357,6 @@ function draw3MAVYOY12MTHRollingChart(){
 }
 
 function draw3MAVYOY12MTHRollingTable(data) {
-	//!!!
-	//yoy3mav12-table
 		var data2 = new google.visualization.DataTable();
 	data2.addColumn('string','Month');
 	data2.addColumn('number', 2006);
@@ -2362,6 +2396,90 @@ function draw3MAVYOY12MTHRollingTable(data) {
 }
 	
 
-
-
+function drawAllAgain() {
+	drawChronologyChart();
+			drawAllTheYearsChart();
+			drawIndexChart();
+			drawYOYChart();
+			drawMOMChart();
+			drawQOQChart();
+			draw3MAVChart();
+			draw12MTHRollingChart();
+			drawMOM12MTHRollingChart();
+			draw3MAVYOYChart();
+			drawImpliedFullYearBKWRDTotalAvgChart();
+			drawImpliedFullYearBKWRDLastThreeYearsAvgChart();
+			drawImpliedFullYearFRWRDTotalAvgChart();
+			drawImpliedFullYearFRWRDLastThreeYearsAvgChart();
+			drawMOMImpliedFullYearBKWRDTotalAvgChart();
+			drawMOMImpliedFullYearBKWRDLastThreeYearsAvgChart();
+			drawMOMImpliedFullYearFRWRDTotalAvgChart();
+			drawMOMImpliedFullYearFRWRDLastThreeYearsAvgChart();
+			draw3MAV12MTHRollingChart();
+			draw3MAVYOY12MTHRollingChart();
+}	
+	
+function chooseDraw(str) {
+	switch (str) {
+		case "all-year":
+			drawAllTheYearsChart();
+			break;
+		case "index":
+			drawIndexChart();
+			break;
+		case "yoy":
+			drawYOYChart();
+			break;
+		case "mom":
+			drawMOMChart();
+			break;
+		case "qoq":
+			drawQOQChart();
+			break;
+		case "mav":
+			draw3MAVChart();
+			break;
+		case "mav-yoy":
+			draw3MAVYOYChart();
+			break;
+		case "mth":
+			draw12MTHRollingChart();
+			break;
+		case "mom-mth":
+			drawMOM12MTHRollingChart();
+			break;
+		case "imptot":
+			drawImpliedFullYearBKWRDTotalAvgChart();
+			break;
+		case "imp3":
+			drawImpliedFullYearBKWRDLastThreeYearsAvgChart();
+			break;
+		case "tot-fut":
+			drawImpliedFullYearFRWRDTotalAvgChart();
+			break;
+		case "3fut":
+			drawImpliedFullYearFRWRDLastThreeYearsAvgChart();
+			break;
+		case "mom-past":
+			drawMOMImpliedFullYearBKWRDTotalAvgChart();
+			break;
+		case "3mom":
+			drawMOMImpliedFullYearBKWRDLastThreeYearsAvgChart();
+			break;
+		case "mom-fut":
+			drawMOMImpliedFullYearFRWRDTotalAvgChart();
+			break;
+		case "3mom-fut":
+			drawMOMImpliedFullYearFRWRDLastThreeYearsAvgChart();
+			break;
+		case "3mav12":
+			draw3MAV12MTHRollingChart();
+			break;
+		case "yoy3mav12":
+			draw3MAVYOY12MTHRollingChart();
+			break;
+		default:
+			console.log("suckadeek");
+	}
+}
 
