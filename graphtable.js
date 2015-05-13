@@ -431,42 +431,42 @@ function getFutureSeasonalLastThreeYearsData(){
 	var Nov = 0;
 	var Dec = 0;
 	
-	for(i=96; i<past_snl_data.length; i++){
+	for(i=96; i<ftr_snl_data.length; i++){
 		if (i%12 == 0){
-			Jan = Jan + past_snl_data[i][1];
+			Jan = Jan + ftr_snl_data[i][1];
 			}
 		if (i%12 == 1){
-			Feb = Feb + past_snl_data[i][1];
+			Feb = Feb + ftr_snl_data[i][1];
 			}
 		if (i%12 == 2){
-			Mar = Mar + past_snl_data[i][1];
+			Mar = Mar + ftr_snl_data[i][1];
 			}
 		if (i%12 == 3){
-			Apr = Apr + past_snl_data[i][1];
+			Apr = Apr + ftr_snl_data[i][1];
 			}
 		if (i%12 == 4){
-			May = May + past_snl_data[i][1];
+			May = May + ftr_snl_data[i][1];
 			}
 		if (i%12 == 5){
-			Jun = Jun + past_snl_data[i][1];
+			Jun = Jun + ftr_snl_data[i][1];
 			}
 		if (i%12 == 6){
-			Jul = Jul + past_snl_data[i][1];
+			Jul = Jul + ftr_snl_data[i][1];
 			}
 		if (i%12 == 7){
-			Aug = Aug + past_snl_data[i][1];
+			Aug = Aug + ftr_snl_data[i][1];
 			}
 		if (i%12 == 8){
-			Sep = Sep + past_snl_data[i][1];
+			Sep = Sep + ftr_snl_data[i][1];
 			}
 		if (i%12 == 9){
-			Oct = Oct + past_snl_data[i][1];
+			Oct = Oct + ftr_snl_data[i][1];
 			}
 		if (i%12 == 10){
-			Nov = Nov + past_snl_data[i][1];
+			Nov = Nov + ftr_snl_data[i][1];
 			}
 		if (i%12 == 11){
-			Dec = Dec + past_snl_data[i][1];
+			Dec = Dec + ftr_snl_data[i][1];
 			}
 		}
 		
@@ -538,7 +538,7 @@ function drawAllTheYearsChart() {
 function drawAllTheYearsTable(data) {
 	var table = new google.visualization.Table(document.getElementById('all-year-table'));
 
-    table.draw(data.toLocaleString(), {showRowNumber: true});
+    table.draw(data, {showRowNumber: true});
     $('#all-year-table-wrap').hide();
     google.visualization.events.addListener(table, 'select', selectHandler);
 }
@@ -1027,7 +1027,7 @@ function drawMOM12MTHRollingChart() {
 	 var row_data = new Array();
 	
 	for (i=0; i<twelve_mth_data.length-1; i++){
-		row_data[row_data.length] = [data_set[i+1][0], (data_set[i+1][1]/data_set[i][1])-1];
+		row_data[row_data.length] = [twelve_mth_data[i+1][0], (twelve_mth_data[i+1][1]/twelve_mth_data[i][1])-1];
 		
 	}
 	
