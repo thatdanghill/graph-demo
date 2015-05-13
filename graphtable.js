@@ -513,11 +513,13 @@ function drawAllTheYearsChart() {
 				
 			]);
 			
-			var options = {'title':'Passenger Volume per year (2004-2014)',
-			'width' : 1000,
-		'height' : 750,
-		'chartArea.width' : 700,
-		'chartArea.height' : 500,
+			var options = {
+				'title':'Passenger Volume per year (2004-2014)',
+				'vAxis': {format:'decimal'},
+				'width' : 1000,
+				'height' : 750,
+				'chartArea.width' : 700,
+				'chartArea.height' : 500,
 			};
 
 			
@@ -787,6 +789,7 @@ function drawChronologyChart(){
 	data.addRows(data_set);
 	
 	var options = {'title':'Total Passenger Volume 2004-2014',
+		'vAxis' : {format: 'decimal'},
 	'width' : 1000,
 		'height' : 750,
 		'chartArea.width' : 700,
@@ -815,6 +818,7 @@ function drawIndexChart(){
 	data.addRows(row_data);
 	
 	var options = {'title':'Total Passenger Index 2004-2014',
+		'vAxis' : {format: 'short'},
 		'width' : 1000,
 		'height' : 750,
 		'chartArea.width' : 700,
