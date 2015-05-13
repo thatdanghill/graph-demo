@@ -31,15 +31,9 @@
 			
 			
 			$(document).ready(function(){
+				$('#westjet').hide();
+				$('#klm').hide();
 				attachHandlers();
-
-				console.log(past_snl_data_ttl_avg);
-				console.log(past_snl_data_lst_three_years);
-				console.log(ftr_snl_data);
-				console.log(ftr_snl_data_ttl_avg);
-				
-				
-
 			});
 		</script>
 	</head>
@@ -160,52 +154,68 @@
 			
 			<br>
 			<h1 style="display: inline-block;"> Implied Full Year based on Total Future Seasonality Average</h1>
-
-			<button id="tab-toggle-yoy" style="display: inline-block;"> Tab View </button>
-			<div id="Implied_Full_Year_FRWRD_Total_Avg_Chart"></div>
+			<button id="tab-toggle-tot-fut" style="display: inline-block;"> Tab View </button>
+			<div id="Implied_Full_Year_FRWRD_Total_Avg_Chart" width='2000' height='700'></div>
+			<div id="tot-fut-table-wrap" display=none>
+				<div id="tot-fut-table" display=none></div>
+			</div>
 			
 			<br>
 			<h1 style="display: inline-block;"> Implied Full Year based on Last Three Years Future Seasonality Average</h1>
-			<button id="tab-toggle-yoy" style="display: inline-block;"> Tab View </button>
-			<div id="Implied_Full_Year_FRWRD_Last_Three_Years_Avg_Chart"></div>
+			<button id="tab-toggle-3fut" style="display: inline-block;"> Tab View </button>
+			<div id="Implied_Full_Year_FRWRD_Last_Three_Years_Avg_Chart" width='2000' height='700'></div>
+			<div id="3fut-table-wrap" display=none>
+				<div id="3fut-table" display=none></div>
+			</div>
 			
 			<br>
 			<h1 style="display: inline-block;"> MoM for the Implied Full Year based on Total Past Seasonality Average</h1>
-			<button id="tab-toggle-yoy" style="display: inline-block;"> Tab View </button>
-			<div id="MoM_Implied_Full_Year_BKWRD_Total_Avg_Chart"></div>
+			<button id="tab-toggle-mom-past" style="display: inline-block;"> Tab View </button>
+			<div id="MoM_Implied_Full_Year_BKWRD_Total_Avg_Chart" width='2000' height='700'></div>
+			<div id="mom-past-table-wrap" display=none>
+				<div id="mom-past-table" display=none></div>
+			</div>
 			
 				<br>
 			<h1 style="display: inline-block;"> MoM for the Implied Full Year based on Last Three Years Past Seasonality Average</h1>
-			<button id="tab-toggle-yoy" style="display: inline-block;"> Tab View </button>
-			<div id="MoM_Implied_Full_Year_BKWRD_Last_Three_Years_Avg_Chart"></div>
+			<button id="tab-toggle-3mom" style="display: inline-block;"> Tab View </button>
+			<div id="MoM_Implied_Full_Year_BKWRD_Last_Three_Years_Avg_Chart" width='2000' height='700'></div>
+			<div id="3mom-table-wrap" display=none>
+				<div id="3mom-table" display=none></div>
+			</div>
 			
 			<br>
 			<h1 style="display: inline-block;"> MoM for the Implied Full Year based on Total Future Seasonality Average</h1>
-			<button id="tab-toggle-yoy" style="display: inline-block;"> Tab View </button>
-			<div id="MoM_Implied_Full_Year_FRWRD_Total_Avg_Chart"></div>
-
+			<button id="tab-toggle-mom-fut" style="display: inline-block;"> Tab View </button>
+			<div id="MoM_Implied_Full_Year_FRWRD_Total_Avg_Chart" width='2000' height='700'></div>
+			<div id="mom-fut-table-wrap" display=none>
+				<div id="mom-fut-table" display=none></div>
+			</div>
 			
 
 
 			<br>
 			<h1 style="display: inline-block;"> MoM for the Implied Full Year based on Last Three Years Future Seasonality Average</h1>
-			<button id="tab-toggle-yoy" style="display: inline-block;"> Tab View </button>
-			<div id="MoM_Implied_Full_Year_FRWRD_Last_Three_Years_Avg_Chart"></div>
+			<button id="tab-toggle-3mom-fut" style="display: inline-block;"> Tab View </button>
+			<div id="MoM_Implied_Full_Year_FRWRD_Last_Three_Years_Avg_Chart" width='2000' height='700'></div>
+			<div id="3mom-fut-table-wrap" display=none>
+				<div id="3mom-fut-table" display=none></div>
+			</div>
 
 			<br>
 			<h1 style="display: inline-block;"> 3MAV on the 12 Month Rolling 2004-2014 </h1>
-			<button id="tab-toggle-mth" style="display: inline-block;"> Tab View </button>
+			<button id="tab-toggle-3mav12" style="display: inline-block;"> Tab View </button>
 			<div id="3MAV_12_mth_rolling_chart" width='2000' height='700'></div>
-			<div id="mth-table-wrap" display=none>
-				<div id="mth-table" display=none></div>
+			<div id="3mav12-table-wrap" display=none>
+				<div id="3mav12-table" display=none></div>
 			</div>
 			
 			<br>
 			<h1 style="display: inline-block;"> YoY for the 3MAV on the 12 Month Rolling 2004-2014 </h1>
-			<button id="tab-toggle-mth" style="display: inline-block;"> Tab View </button>
+			<button id="tab-toggle-yoy3mav12" style="display: inline-block;"> Tab View </button>
 			<div id="3MAV_YOY_12_mth_rolling_chart" width='2000' height='700'></div>
-			<div id="mth-table-wrap" display=none>
-				<div id="mth-table" display=none></div>
+			<div id="yoy3mav12-table-wrap" display=none>
+				<div id="yoy3mav12-table" display=none></div>
 			</div>
 			
 							
@@ -213,10 +223,14 @@
 
 		</div>
 		<div id="westjet" display="none">
+			<p>
 			Similar graphs here...
+			</p>
 		</div>
 		<div id="klm" display="none">
+			<p>
 			Similar graphs here...
+			</p>
 		</div>
 	</body>
 </html>
