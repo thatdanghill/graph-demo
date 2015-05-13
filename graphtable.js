@@ -538,7 +538,7 @@ function drawAllTheYearsChart() {
 function drawAllTheYearsTable(data) {
 	var table = new google.visualization.Table(document.getElementById('all-year-table'));
 
-    table.draw(data, {showRowNumber: true});
+    table.draw(data.toLocaleString(), {showRowNumber: true});
     $('#all-year-table-wrap').hide();
     google.visualization.events.addListener(table, 'select', selectHandler);
 }
