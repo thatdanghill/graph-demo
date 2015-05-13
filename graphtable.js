@@ -1188,7 +1188,7 @@ function draw3MAVTable(data) {
 }
 
 function drawMoMTable(data) {
-	var data2 = new google.visualization.DataTable();
+		var data2 = new google.visualization.DataTable();
 	data2.addColumn('string','Month');
 	data2.addColumn('number', 2004);
 	data2.addColumn('number', 2005);
@@ -1200,6 +1200,7 @@ function drawMoMTable(data) {
 	data2.addColumn('number', 2011);
 	data2.addColumn('number', 2012);
 	data2.addColumn('number', 2013);
+	data2.addColumn('number', 2014);
 	data2.addRows(12);
 	data2.setFormattedValue(0,0,"Jan");
 	data2.setFormattedValue(1,0,"Feb");
@@ -1213,9 +1214,12 @@ function drawMoMTable(data) {
 	data2.setFormattedValue(9,0,"Oct");
 	data2.setFormattedValue(10,0,"Nov");
 	data2.setFormattedValue(11,0,"Dec");
-	for (var col = 1; col < 11; col++) {
+	for (var row = 1; row < 12; row++) {
+		data2.setFormattedValue(row,1,parseFloat(data.getFormattedValue(row-1,1)).toFixed(3).toString());
+	}
+	for (var col = 2; col < 12; col++) {
 		for (var row = 0; row < 12; row++) {
-			data2.setFormattedValue(row,col,parseFloat(data.getFormattedValue((col-1)*12+row,1)).toFixed(3).toString());
+			data2.setFormattedValue(row,col,parseFloat(data.getFormattedValue((col-1)*12-1+row,1)).toFixed(3).toString());
 		}
 	}
 	var table = new google.visualization.Table(document.getElementById('mom-table'));
@@ -2482,4 +2486,3 @@ function chooseDraw(str) {
 			console.log("suckadeek");
 	}
 }
-
