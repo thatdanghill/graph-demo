@@ -708,6 +708,46 @@ function attachHandlers() {
 		$('#mom-mth-table-wrap').toggle("slow");
 	});
 	
+	$("#tab-toggle-imptot").click(function(){
+		$('#imptot-table-wrap').toggle("slow");
+	});
+	
+	$("#tab-toggle-imp3").click(function(){
+		$('#imp3-table-wrap').toggle("slow");
+	});
+	
+	$("#tab-toggle-tot-fut").click(function(){
+		$('#tot-fut-table-wrap').toggle("slow");
+	});
+	
+	$("#tab-toggle-3fut").click(function(){
+		$('#3fut-table-wrap').toggle("slow");
+	});
+	
+	$("#tab-toggle-mom-past").click(function(){
+		$('#mom-past-table-wrap').toggle("slow");
+	});
+	
+	$("#tab-toggle-3mom").click(function(){
+		$('#3mom-table-wrap').toggle("slow");
+	});
+	
+	$("#tab-toggle-mom-fut").click(function(){
+		$('#mom-fut-table-wrap').toggle("slow");
+	});
+	
+	$("#tab-toggle-3mom-fut").click(function(){
+		$('#3mom-fut-table-wrap').toggle("slow");
+	});
+	
+	$("#tab-toggle-3mav12").click(function(){
+		$('#3mav12-table-wrap').toggle("slow");
+	});
+	
+	$("#tab-toggle-yoy3mav12").click(function(){
+		$('#yoy3mav12-table-wrap').toggle("slow");
+	});
+	
 	$('#airline').change(function(){
 		if ($('#airline').val() == 'easyjet') {
 			$('#easyjet').show();
@@ -1306,7 +1346,47 @@ function drawImpliedFullYearBKWRDTotalAvgChart(){
 
 			var chart = new google.charts.Line(document.getElementById('Implied_Full_Year_BKWRD_Total_Avg_Chart'));
 			chart.draw(data, options);
+			drawImpliedFullYearBKWRDTotalAvgTable(data);
 	
+}
+
+function drawImpliedFullYearBKWRDTotalAvgTable(data) {
+	var data2 = new google.visualization.DataTable();
+	data2.addColumn('string','Month');
+	data2.addColumn('number', 2004);
+	data2.addColumn('number', 2005);
+	data2.addColumn('number', 2006);
+	data2.addColumn('number', 2007);
+	data2.addColumn('number', 2008);
+	data2.addColumn('number', 2009);
+	data2.addColumn('number', 2010);
+	data2.addColumn('number', 2011);
+	data2.addColumn('number', 2012);
+	data2.addColumn('number', 2013);
+	data2.addColumn('number', 2014);
+	data2.addRows(12);
+	data2.setFormattedValue(0,0,"Jan");
+	data2.setFormattedValue(1,0,"Feb");
+	data2.setFormattedValue(2,0,"Mar");
+	data2.setFormattedValue(3,0,"Apr");
+	data2.setFormattedValue(4,0,"May");
+	data2.setFormattedValue(5,0,"Jun");
+	data2.setFormattedValue(6,0,"Jul");
+	data2.setFormattedValue(7,0,"Aug");
+	data2.setFormattedValue(8,0,"Sep");
+	data2.setFormattedValue(9,0,"Oct");
+	data2.setFormattedValue(10,0,"Nov");
+	data2.setFormattedValue(11,0,"Dec");
+	for (var col = 1; col < 12; col++) {
+		for (var row = 0; row < 12; row++) {
+			data2.setFormattedValue(row,col,parseFloat(data.getFormattedValue((col-1)*12+row,1)).toFixed(0).toString());
+		}
+	}
+	var table = new google.visualization.Table(document.getElementById('imptot-table'));
+
+    table.draw(data2, {showRowNumber: true});
+    $('#imptot-table-wrap').hide();
+
 }
 
 function drawImpliedFullYearBKWRDLastThreeYearsAvgChart(){
@@ -1379,7 +1459,47 @@ function drawImpliedFullYearBKWRDLastThreeYearsAvgChart(){
 
 			var chart = new google.charts.Line(document.getElementById('Implied_Full_Year_BKWRD_Last_Three_Years_Avg_Chart'));
 			chart.draw(data, options);
+			drawImpliedFullYearBKWRDLastThreeYearsAvgTable(data);
 			
+}
+
+function drawImpliedFullYearBKWRDLastThreeYearsAvgTable(data) {
+	var data2 = new google.visualization.DataTable();
+	data2.addColumn('string','Month');
+	data2.addColumn('number', 2004);
+	data2.addColumn('number', 2005);
+	data2.addColumn('number', 2006);
+	data2.addColumn('number', 2007);
+	data2.addColumn('number', 2008);
+	data2.addColumn('number', 2009);
+	data2.addColumn('number', 2010);
+	data2.addColumn('number', 2011);
+	data2.addColumn('number', 2012);
+	data2.addColumn('number', 2013);
+	data2.addColumn('number', 2014);
+	data2.addRows(12);
+	data2.setFormattedValue(0,0,"Jan");
+	data2.setFormattedValue(1,0,"Feb");
+	data2.setFormattedValue(2,0,"Mar");
+	data2.setFormattedValue(3,0,"Apr");
+	data2.setFormattedValue(4,0,"May");
+	data2.setFormattedValue(5,0,"Jun");
+	data2.setFormattedValue(6,0,"Jul");
+	data2.setFormattedValue(7,0,"Aug");
+	data2.setFormattedValue(8,0,"Sep");
+	data2.setFormattedValue(9,0,"Oct");
+	data2.setFormattedValue(10,0,"Nov");
+	data2.setFormattedValue(11,0,"Dec");
+	for (var col = 1; col < 12; col++) {
+		for (var row = 0; row < 12; row++) {
+			data2.setFormattedValue(row,col,parseFloat(data.getFormattedValue((col-1)*12+row,1)).toFixed(0).toString());
+		}
+	}
+	var table = new google.visualization.Table(document.getElementById('imp3-table'));
+
+    table.draw(data2, {showRowNumber: true});
+    $('#imp3-table-wrap').hide();
+
 }
 
 function drawImpliedFullYearFRWRDTotalAvgChart(){
@@ -1447,7 +1567,46 @@ function drawImpliedFullYearFRWRDTotalAvgChart(){
 
 			var chart = new google.charts.Line(document.getElementById('Implied_Full_Year_FRWRD_Total_Avg_Chart'));
 			chart.draw(data, options);
+			drawImpliedFullYearFRWRDTotalAvgTable(data);
 
+}
+
+function drawImpliedFullYearFRWRDTotalAvgTable(data) {
+		var data2 = new google.visualization.DataTable();
+	data2.addColumn('string','Month');
+	data2.addColumn('number', 2004);
+	data2.addColumn('number', 2005);
+	data2.addColumn('number', 2006);
+	data2.addColumn('number', 2007);
+	data2.addColumn('number', 2008);
+	data2.addColumn('number', 2009);
+	data2.addColumn('number', 2010);
+	data2.addColumn('number', 2011);
+	data2.addColumn('number', 2012);
+	data2.addColumn('number', 2013);
+	data2.addColumn('number', 2014);
+	data2.addRows(12);
+	data2.setFormattedValue(0,0,"Jan");
+	data2.setFormattedValue(1,0,"Feb");
+	data2.setFormattedValue(2,0,"Mar");
+	data2.setFormattedValue(3,0,"Apr");
+	data2.setFormattedValue(4,0,"May");
+	data2.setFormattedValue(5,0,"Jun");
+	data2.setFormattedValue(6,0,"Jul");
+	data2.setFormattedValue(7,0,"Aug");
+	data2.setFormattedValue(8,0,"Sep");
+	data2.setFormattedValue(9,0,"Oct");
+	data2.setFormattedValue(10,0,"Nov");
+	data2.setFormattedValue(11,0,"Dec");
+	for (var col = 1; col < 12; col++) {
+		for (var row = 0; row < 12; row++) {
+			data2.setFormattedValue(row,col,parseFloat(data.getFormattedValue((col-1)*12+row,1)).toFixed(0).toString());
+		}
+	}
+	var table = new google.visualization.Table(document.getElementById('tot-fut-table'));
+
+    table.draw(data2, {showRowNumber: true});
+    $('#tot-fut-table-wrap').hide();
 }
 
 function drawImpliedFullYearFRWRDLastThreeYearsAvgChart(){
@@ -1520,6 +1679,45 @@ function drawImpliedFullYearFRWRDLastThreeYearsAvgChart(){
 
 			var chart = new google.charts.Line(document.getElementById('Implied_Full_Year_FRWRD_Last_Three_Years_Avg_Chart'));
 			chart.draw(data, options);
+			drawImpliedFullYearFRWRDLastThreeYearsAvgTable(data);
+}
+
+function drawImpliedFullYearFRWRDLastThreeYearsAvgTable(data) {
+	var data2 = new google.visualization.DataTable();
+	data2.addColumn('string','Month');
+	data2.addColumn('number', 2004);
+	data2.addColumn('number', 2005);
+	data2.addColumn('number', 2006);
+	data2.addColumn('number', 2007);
+	data2.addColumn('number', 2008);
+	data2.addColumn('number', 2009);
+	data2.addColumn('number', 2010);
+	data2.addColumn('number', 2011);
+	data2.addColumn('number', 2012);
+	data2.addColumn('number', 2013);
+	data2.addColumn('number', 2014);
+	data2.addRows(12);
+	data2.setFormattedValue(0,0,"Jan");
+	data2.setFormattedValue(1,0,"Feb");
+	data2.setFormattedValue(2,0,"Mar");
+	data2.setFormattedValue(3,0,"Apr");
+	data2.setFormattedValue(4,0,"May");
+	data2.setFormattedValue(5,0,"Jun");
+	data2.setFormattedValue(6,0,"Jul");
+	data2.setFormattedValue(7,0,"Aug");
+	data2.setFormattedValue(8,0,"Sep");
+	data2.setFormattedValue(9,0,"Oct");
+	data2.setFormattedValue(10,0,"Nov");
+	data2.setFormattedValue(11,0,"Dec");
+	for (var col = 1; col < 12; col++) {
+		for (var row = 0; row < 12; row++) {
+			data2.setFormattedValue(row,col,parseFloat(data.getFormattedValue((col-1)*12+row,1)).toFixed(0).toString());
+		}
+	}
+	var table = new google.visualization.Table(document.getElementById('3fut-table'));
+
+    table.draw(data2, {showRowNumber: true});
+    $('#3fut-table-wrap').hide();
 }
 
 function drawMOMImpliedFullYearBKWRDTotalAvgChart(){
@@ -1595,9 +1793,51 @@ function drawMOMImpliedFullYearBKWRDTotalAvgChart(){
 			var chart = new google.charts.Line(document.getElementById('MoM_Implied_Full_Year_BKWRD_Total_Avg_Chart'));
 			chart.draw(data, options);
 	
-
+			drawMOMImpliedFullYearBKWRDTotalAvgTable(data);
 	
 }
+
+function drawMOMImpliedFullYearBKWRDTotalAvgTable(data) {
+		var data2 = new google.visualization.DataTable();
+	data2.addColumn('string','Month');
+	data2.addColumn('number', 2004);
+	data2.addColumn('number', 2005);
+	data2.addColumn('number', 2006);
+	data2.addColumn('number', 2007);
+	data2.addColumn('number', 2008);
+	data2.addColumn('number', 2009);
+	data2.addColumn('number', 2010);
+	data2.addColumn('number', 2011);
+	data2.addColumn('number', 2012);
+	data2.addColumn('number', 2013);
+	data2.addColumn('number', 2014);
+	data2.addRows(12);
+	data2.setFormattedValue(0,0,"Jan");
+	data2.setFormattedValue(1,0,"Feb");
+	data2.setFormattedValue(2,0,"Mar");
+	data2.setFormattedValue(3,0,"Apr");
+	data2.setFormattedValue(4,0,"May");
+	data2.setFormattedValue(5,0,"Jun");
+	data2.setFormattedValue(6,0,"Jul");
+	data2.setFormattedValue(7,0,"Aug");
+	data2.setFormattedValue(8,0,"Sep");
+	data2.setFormattedValue(9,0,"Oct");
+	data2.setFormattedValue(10,0,"Nov");
+	data2.setFormattedValue(11,0,"Dec");
+	for (var row = 1; row < 12; row++) {
+		data2.setFormattedValue(row,1,parseFloat(data.getFormattedValue(row-1,1)).toFixed(3).toString());
+	}
+	for (var col = 2; col < 12; col++) {
+		for (var row = 0; row < 12; row++) {
+			data2.setFormattedValue(row,col,parseFloat(data.getFormattedValue((col-1)*12-1+row,1)).toFixed(3).toString());
+		}
+	}
+	var table = new google.visualization.Table(document.getElementById('mom-past-table'));
+
+    table.draw(data2, {showRowNumber: true});
+    $('#mom-past-table-wrap').hide();
+}
+
 function drawMOMImpliedFullYearBKWRDLastThreeYearsAvgChart(){
 	
 	var data = new google.visualization.DataTable();
@@ -1675,7 +1915,48 @@ function drawMOMImpliedFullYearBKWRDLastThreeYearsAvgChart(){
 			var chart = new google.charts.Line(document.getElementById('MoM_Implied_Full_Year_BKWRD_Last_Three_Years_Avg_Chart'));
 			chart.draw(data, options);
 	
-	
+			drawMOMImpliedFullYearBKWRDLastThreeYearsAvgTable(data);
+}
+
+function drawMOMImpliedFullYearBKWRDLastThreeYearsAvgTable(data) {
+	var data2 = new google.visualization.DataTable();
+	data2.addColumn('string','Month');
+	data2.addColumn('number', 2004);
+	data2.addColumn('number', 2005);
+	data2.addColumn('number', 2006);
+	data2.addColumn('number', 2007);
+	data2.addColumn('number', 2008);
+	data2.addColumn('number', 2009);
+	data2.addColumn('number', 2010);
+	data2.addColumn('number', 2011);
+	data2.addColumn('number', 2012);
+	data2.addColumn('number', 2013);
+	data2.addColumn('number', 2014);
+	data2.addRows(12);
+	data2.setFormattedValue(0,0,"Jan");
+	data2.setFormattedValue(1,0,"Feb");
+	data2.setFormattedValue(2,0,"Mar");
+	data2.setFormattedValue(3,0,"Apr");
+	data2.setFormattedValue(4,0,"May");
+	data2.setFormattedValue(5,0,"Jun");
+	data2.setFormattedValue(6,0,"Jul");
+	data2.setFormattedValue(7,0,"Aug");
+	data2.setFormattedValue(8,0,"Sep");
+	data2.setFormattedValue(9,0,"Oct");
+	data2.setFormattedValue(10,0,"Nov");
+	data2.setFormattedValue(11,0,"Dec");
+	for (var row = 1; row < 12; row++) {
+		data2.setFormattedValue(row,1,parseFloat(data.getFormattedValue(row-1,1)).toFixed(3).toString());
+	}
+	for (var col = 2; col < 12; col++) {
+		for (var row = 0; row < 12; row++) {
+			data2.setFormattedValue(row,col,parseFloat(data.getFormattedValue((col-1)*12-1+row,1)).toFixed(3).toString());
+		}
+	}
+	var table = new google.visualization.Table(document.getElementById('3mom-table'));
+
+    table.draw(data2, {showRowNumber: true});
+    $('#3mom-table-wrap').hide();
 }
 
 function drawMOMImpliedFullYearFRWRDTotalAvgChart(){
@@ -1747,7 +2028,48 @@ function drawMOMImpliedFullYearFRWRDTotalAvgChart(){
 
 			var chart = new google.charts.Line(document.getElementById('MoM_Implied_Full_Year_FRWRD_Total_Avg_Chart'));
 			chart.draw(data, options);	
-	
+			drawMOMImpliedFullYearFRWRDTotalAvgTable(data);
+}
+
+function drawMOMImpliedFullYearFRWRDTotalAvgTable(data) {
+	var data2 = new google.visualization.DataTable();
+	data2.addColumn('string','Month');
+	data2.addColumn('number', 2004);
+	data2.addColumn('number', 2005);
+	data2.addColumn('number', 2006);
+	data2.addColumn('number', 2007);
+	data2.addColumn('number', 2008);
+	data2.addColumn('number', 2009);
+	data2.addColumn('number', 2010);
+	data2.addColumn('number', 2011);
+	data2.addColumn('number', 2012);
+	data2.addColumn('number', 2013);
+	data2.addColumn('number', 2014);
+	data2.addRows(12);
+	data2.setFormattedValue(0,0,"Jan");
+	data2.setFormattedValue(1,0,"Feb");
+	data2.setFormattedValue(2,0,"Mar");
+	data2.setFormattedValue(3,0,"Apr");
+	data2.setFormattedValue(4,0,"May");
+	data2.setFormattedValue(5,0,"Jun");
+	data2.setFormattedValue(6,0,"Jul");
+	data2.setFormattedValue(7,0,"Aug");
+	data2.setFormattedValue(8,0,"Sep");
+	data2.setFormattedValue(9,0,"Oct");
+	data2.setFormattedValue(10,0,"Nov");
+	data2.setFormattedValue(11,0,"Dec");
+	for (var row = 1; row < 12; row++) {
+		data2.setFormattedValue(row,1,parseFloat(data.getFormattedValue(row-1,1)).toFixed(3).toString());
+	}
+	for (var col = 2; col < 12; col++) {
+		for (var row = 0; row < 12; row++) {
+			data2.setFormattedValue(row,col,parseFloat(data.getFormattedValue((col-1)*12-1+row,1)).toFixed(3).toString());
+		}
+	}
+	var table = new google.visualization.Table(document.getElementById('mom-fut-table'));
+
+    table.draw(data2, {showRowNumber: true});
+    $('#mom-fut-table-wrap').hide();
 }
 
 function drawMOMImpliedFullYearFRWRDLastThreeYearsAvgChart(){
@@ -1826,9 +2148,50 @@ function drawMOMImpliedFullYearFRWRDLastThreeYearsAvgChart(){
 
 			var chart = new google.charts.Line(document.getElementById('MoM_Implied_Full_Year_FRWRD_Last_Three_Years_Avg_Chart'));
 			chart.draw(data, options);
+			drawMOMImpliedFullYearFRWRDLastThreeYearsAvgTable(data);
+	
+	
+}
 
-	
-	
+function drawMOMImpliedFullYearFRWRDLastThreeYearsAvgTable(data) {
+	var data2 = new google.visualization.DataTable();
+	data2.addColumn('string','Month');
+	data2.addColumn('number', 2004);
+	data2.addColumn('number', 2005);
+	data2.addColumn('number', 2006);
+	data2.addColumn('number', 2007);
+	data2.addColumn('number', 2008);
+	data2.addColumn('number', 2009);
+	data2.addColumn('number', 2010);
+	data2.addColumn('number', 2011);
+	data2.addColumn('number', 2012);
+	data2.addColumn('number', 2013);
+	data2.addColumn('number', 2014);
+	data2.addRows(12);
+	data2.setFormattedValue(0,0,"Jan");
+	data2.setFormattedValue(1,0,"Feb");
+	data2.setFormattedValue(2,0,"Mar");
+	data2.setFormattedValue(3,0,"Apr");
+	data2.setFormattedValue(4,0,"May");
+	data2.setFormattedValue(5,0,"Jun");
+	data2.setFormattedValue(6,0,"Jul");
+	data2.setFormattedValue(7,0,"Aug");
+	data2.setFormattedValue(8,0,"Sep");
+	data2.setFormattedValue(9,0,"Oct");
+	data2.setFormattedValue(10,0,"Nov");
+	data2.setFormattedValue(11,0,"Dec");
+	for (var row = 1; row < 12; row++) {
+		data2.setFormattedValue(row,1,parseFloat(data.getFormattedValue(row-1,1)).toFixed(3).toString());
+	}
+	for (var col = 2; col < 12; col++) {
+		for (var row = 0; row < 12; row++) {
+			data2.setFormattedValue(row,col,parseFloat(data.getFormattedValue((col-1)*12-1+row,1)).toFixed(3).toString());
+		}
+	}
+	var table = new google.visualization.Table(document.getElementById('3mom-fut-table'));
+
+    table.draw(data2, {showRowNumber: true});
+    $('#3mom-fut-table-wrap').hide();
 }
 
 function draw3MAV12MTHRollingChart(){
@@ -1868,7 +2231,47 @@ function draw3MAV12MTHRollingChart(){
 			var chart = new google.charts.Line(document.getElementById('3MAV_12_mth_rolling_chart'));
 			chart.draw(data, options);
 			
+			draw3MAV12MTHRollingTable(data);
+}
 
+function draw3MAV12MTHRollingTable(data) {
+	var data2 = new google.visualization.DataTable();
+	data2.addColumn('string','Month');
+	data2.addColumn('number', 2005);
+	data2.addColumn('number', 2006);
+	data2.addColumn('number', 2007);
+	data2.addColumn('number', 2008);
+	data2.addColumn('number', 2009);
+	data2.addColumn('number', 2010);
+	data2.addColumn('number', 2011);
+	data2.addColumn('number', 2012);
+	data2.addColumn('number', 2013);
+	data2.addColumn('number', 2014);
+	data2.addRows(12);
+	data2.setFormattedValue(0,0,"Jan");
+	data2.setFormattedValue(1,0,"Feb");
+	data2.setFormattedValue(2,0,"Mar");
+	data2.setFormattedValue(3,0,"Apr");
+	data2.setFormattedValue(4,0,"May");
+	data2.setFormattedValue(5,0,"Jun");
+	data2.setFormattedValue(6,0,"Jul");
+	data2.setFormattedValue(7,0,"Aug");
+	data2.setFormattedValue(8,0,"Sep");
+	data2.setFormattedValue(9,0,"Oct");
+	data2.setFormattedValue(10,0,"Nov");
+	data2.setFormattedValue(11,0,"Dec");
+	for (var row = 2; row < 12; row++) {
+		data2.setFormattedValue(row,1,parseFloat(data.getFormattedValue(row-2,1)).toFixed(0).toString());
+	}
+	for (var col = 2; col < 11; col++) {
+		for (var row = 0; row < 12; row++) {
+			data2.setFormattedValue(row,col,parseFloat(data.getFormattedValue((col-1)*12-2+row,1)).toFixed(0).toString());
+		}
+	}
+	var table = new google.visualization.Table(document.getElementById('3mav12-table'));
+
+    table.draw(data2, {showRowNumber: true});
+    $('#3mav12-table-wrap').hide();
 }
 
 function draw3MAVYOY12MTHRollingChart(){
@@ -1912,9 +2315,50 @@ function draw3MAVYOY12MTHRollingChart(){
 			var chart = new google.charts.Line(document.getElementById('3MAV_YOY_12_mth_rolling_chart'));
 			chart.draw(data, options);
 			
-
+			draw3MAVYOY12MTHRollingTable(data);
 
 	
+}
+
+function draw3MAVYOY12MTHRollingTable(data) {
+	//!!!
+	//yoy3mav12-table
+		var data2 = new google.visualization.DataTable();
+	data2.addColumn('string','Month');
+	data2.addColumn('number', 2006);
+	data2.addColumn('number', 2007);
+	data2.addColumn('number', 2008);
+	data2.addColumn('number', 2009);
+	data2.addColumn('number', 2010);
+	data2.addColumn('number', 2011);
+	data2.addColumn('number', 2012);
+	data2.addColumn('number', 2013);
+	data2.addColumn('number', 2014);
+	data2.addRows(12);
+	data2.setFormattedValue(0,0,"Jan");
+	data2.setFormattedValue(1,0,"Feb");
+	data2.setFormattedValue(2,0,"Mar");
+	data2.setFormattedValue(3,0,"Apr");
+	data2.setFormattedValue(4,0,"May");
+	data2.setFormattedValue(5,0,"Jun");
+	data2.setFormattedValue(6,0,"Jul");
+	data2.setFormattedValue(7,0,"Aug");
+	data2.setFormattedValue(8,0,"Sep");
+	data2.setFormattedValue(9,0,"Oct");
+	data2.setFormattedValue(10,0,"Nov");
+	data2.setFormattedValue(11,0,"Dec");
+	for (var row = 2; row < 12; row++) {
+		data2.setFormattedValue(row,1,parseFloat(data.getFormattedValue(row-2,1)).toFixed(3).toString());
+	}
+	for (var col = 2; col < 10; col++) {
+		for (var row = 0; row < 12; row++) {
+			data2.setFormattedValue(row,col,parseFloat(data.getFormattedValue((col-1)*12-2+row,1)).toFixed(3).toString());
+		}
+	}	
+	var table = new google.visualization.Table(document.getElementById('yoy3mav12-table'));
+
+    table.draw(data2, {showRowNumber: true});
+    $('#yoy3mav12-table-wrap').hide();
 }
 	
 
