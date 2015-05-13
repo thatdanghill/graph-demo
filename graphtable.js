@@ -538,7 +538,11 @@ function drawAllTheYearsChart() {
 			
 function drawAllTheYearsTable(data) {
 	var table = new google.visualization.Table(document.getElementById('all-year-table'));
-
+	var formatter = new google.visualization.NumberFormat(
+			{pattern:'#,###'});
+	for (var col = 1; col < 12; col++) {
+		formatter.format(data, col);	
+	}
     table.draw(data, {showRowNumber: true});
     $('#all-year-table-wrap').hide();
     google.visualization.events.addListener(table, 'select', selectHandler);
@@ -571,6 +575,9 @@ function drawChronTable(data) {
 	data2.setFormattedValue(9,0,"Oct");
 	data2.setFormattedValue(10,0,"Nov");
 	data2.setFormattedValue(11,0,"Dec");
+		var formatter = new google.visualization.NumberFormat(
+			{pattern:'#,###'});
+		formatter.format(data, 1);
 	for (var col = 1; col < 12; col++) {
 		for (var row = 0; row < 12; row++) {
 			data2.setFormattedValue(row,col,data.getFormattedValue((col-1)*12+row,1));
@@ -609,6 +616,9 @@ function drawIndexTable(data) {
 	data2.setFormattedValue(9,0,"Oct");
 	data2.setFormattedValue(10,0,"Nov");
 	data2.setFormattedValue(11,0,"Dec");
+		var formatter = new google.visualization.NumberFormat(
+			{pattern:'#,###.###'});
+		formatter.format(data, 1);
 	for (var col = 1; col < 12; col++) {
 		for (var row = 0; row < 12; row++) {
 			data2.setFormattedValue(row,col,data.getFormattedValue((col-1)*12+row,1));
@@ -646,9 +656,12 @@ function drawYoYTable(data) {
 	data2.setFormattedValue(9,0,"Oct");
 	data2.setFormattedValue(10,0,"Nov");
 	data2.setFormattedValue(11,0,"Dec");
+	var formatter = new google.visualization.NumberFormat(
+			{pattern:'#.###%'});
+	formatter.format(data, 1);
 	for (var col = 1; col < 11; col++) {
 		for (var row = 0; row < 12; row++) {
-			data2.setFormattedValue(row,col,parseFloat(data.getFormattedValue((col-1)*12+row,1)).toFixed(3).toString());
+			data2.setFormattedValue(row,col,data.getFormattedValue((col-1)*12+row,1));
 		}
 	}
 
@@ -949,12 +962,15 @@ function drawQOQTable(data) {
 	data2.setFormattedValue(9,0,"Oct");
 	data2.setFormattedValue(10,0,"Nov");
 	data2.setFormattedValue(11,0,"Dec");
+	var formatter = new google.visualization.NumberFormat(
+			{pattern:'#.###%'});
+	formatter.format(data, 1);
 	for (var row = 5; row < 12; row++) {
-		data2.setFormattedValue(row,1,parseFloat(data.getFormattedValue(row-5,1)).toFixed(3).toString());
+		data2.setFormattedValue(row,1,data.getFormattedValue(row-5,1));
 	}
 	for (var col = 2; col < 11; col++) {
 		for (var row = 0; row < 12; row++) {
-			data2.setFormattedValue(row,col,parseFloat(data.getFormattedValue((col-1)*12-5+row,1)).toFixed(3).toString());
+			data2.setFormattedValue(row,col,data.getFormattedValue((col-1)*12-5+row,1));
 		}
 	}
 
@@ -1021,6 +1037,9 @@ function draw12MTHRollingTable(data) {
 	data2.setFormattedValue(9,0,"Oct");
 	data2.setFormattedValue(10,0,"Nov");
 	data2.setFormattedValue(11,0,"Dec");
+	var formatter = new google.visualization.NumberFormat(
+		{pattern:'#,###'});
+	formatter.format(data, 1);
 	for (var col = 1; col < 11; col++) {
 		for (var row = 0; row < 12; row++) {
 			data2.setFormattedValue(row,col,data.getFormattedValue((col-1)*12+row,1));
@@ -1099,12 +1118,15 @@ function drawMOM12MTHRollingTable(data) {
 	data2.setFormattedValue(9,0,"Oct");
 	data2.setFormattedValue(10,0,"Nov");
 	data2.setFormattedValue(11,0,"Dec");
+	var formatter = new google.visualization.NumberFormat(
+			{pattern:'#.###%'});
+	formatter.format(data, 1);
 	for (var row = 1; row < 12; row++) {
-		data2.setFormattedValue(row,1,parseFloat(data.getFormattedValue(row-1,1)).toFixed(3).toString());
+		data2.setFormattedValue(row,1,data.getFormattedValue(row-1,1));
 	}
 	for (var col = 2; col < 11; col++) {
 		for (var row = 0; row < 12; row++) {
-			data2.setFormattedValue(row,col,parseFloat(data.getFormattedValue((col-1)*12-1+row,1)).toFixed(3).toString());
+			data2.setFormattedValue(row,col,data.getFormattedValue((col-1)*12-1+row,1));
 		}
 	}
 
@@ -1175,12 +1197,15 @@ function draw3MAVTable(data) {
 	data2.setFormattedValue(9,0,"Oct");
 	data2.setFormattedValue(10,0,"Nov");
 	data2.setFormattedValue(11,0,"Dec");
+		var formatter = new google.visualization.NumberFormat(
+			{pattern:'#,###'});
+		formatter.format(data, 1);
 	for (var row = 2; row < 12; row++) {
-		data2.setFormattedValue(row,1,parseFloat(data.getFormattedValue(row-2,1)).toFixed(0).toString());
+		data2.setFormattedValue(row,1,data.getFormattedValue(row-2,1));
 	}
 	for (var col = 2; col < 12; col++) {
 		for (var row = 0; row < 12; row++) {
-			data2.setFormattedValue(row,col,parseFloat(data.getFormattedValue((col-1)*12-2+row,1)).toFixed(0).toString());
+			data2.setFormattedValue(row,col,data.getFormattedValue((col-1)*12-2+row,1));
 		}
 	}
 
@@ -1218,12 +1243,15 @@ function drawMoMTable(data) {
 	data2.setFormattedValue(9,0,"Oct");
 	data2.setFormattedValue(10,0,"Nov");
 	data2.setFormattedValue(11,0,"Dec");
+		var formatter = new google.visualization.NumberFormat(
+			{pattern:'#.###%'});
+		formatter.format(data, 1);
 	for (var row = 1; row < 12; row++) {
-		data2.setFormattedValue(row,1,parseFloat(data.getFormattedValue(row-1,1)).toFixed(3).toString());
+		data2.setFormattedValue(row,1,data.getFormattedValue(row-1,1));
 	}
 	for (var col = 2; col < 12; col++) {
 		for (var row = 0; row < 12; row++) {
-			data2.setFormattedValue(row,col,parseFloat(data.getFormattedValue((col-1)*12-1+row,1)).toFixed(3).toString());
+			data2.setFormattedValue(row,col,data.getFormattedValue((col-1)*12-1+row,1));
 		}
 	}
 	var table = new google.visualization.Table(document.getElementById('mom-table'));
@@ -1296,12 +1324,15 @@ function draw3MAVYOYTable(data) {
 	data2.setFormattedValue(9,0,"Oct");
 	data2.setFormattedValue(10,0,"Nov");
 	data2.setFormattedValue(11,0,"Dec");
+	var formatter = new google.visualization.NumberFormat(
+			{pattern:'#.###%'}); 
+	formatter.format(data, 1);
 	for (var row = 2; row < 12; row++) {
-		data2.setFormattedValue(row,1,parseFloat(data.getFormattedValue(row-2,1)).toFixed(3).toString());
+		data2.setFormattedValue(row,1,data.getFormattedValue(row-2,1));
 	}
 	for (var col = 2; col < 11; col++) {
 		for (var row = 0; row < 12; row++) {
-			data2.setFormattedValue(row,col,parseFloat(data.getFormattedValue((col-1)*12-2+row,1)).toFixed(3).toString());
+			data2.setFormattedValue(row,col,data.getFormattedValue((col-1)*12-2+row,1));
 		}
 	}
 
@@ -1408,9 +1439,12 @@ function drawImpliedFullYearBKWRDTotalAvgTable(data) {
 	data2.setFormattedValue(9,0,"Oct");
 	data2.setFormattedValue(10,0,"Nov");
 	data2.setFormattedValue(11,0,"Dec");
+		var formatter = new google.visualization.NumberFormat(
+			{pattern:'#,###'});
+		formatter.format(data, 1);
 	for (var col = 1; col < 12; col++) {
 		for (var row = 0; row < 12; row++) {
-			data2.setFormattedValue(row,col,parseFloat(data.getFormattedValue((col-1)*12+row,1)).toFixed(0).toString());
+			data2.setFormattedValue(row,col,data.getFormattedValue((col-1)*12+row,1));
 		}
 	}
 	var table = new google.visualization.Table(document.getElementById('imptot-table'));
@@ -1522,9 +1556,12 @@ function drawImpliedFullYearBKWRDLastThreeYearsAvgTable(data) {
 	data2.setFormattedValue(9,0,"Oct");
 	data2.setFormattedValue(10,0,"Nov");
 	data2.setFormattedValue(11,0,"Dec");
+		var formatter = new google.visualization.NumberFormat(
+			{pattern:'#,###'});
+		formatter.format(data, 1);
 	for (var col = 1; col < 12; col++) {
 		for (var row = 0; row < 12; row++) {
-			data2.setFormattedValue(row,col,parseFloat(data.getFormattedValue((col-1)*12+row,1)).toFixed(0).toString());
+			data2.setFormattedValue(row,col,data.getFormattedValue((col-1)*12+row,1));
 		}
 	}
 	var table = new google.visualization.Table(document.getElementById('imp3-table'));
@@ -1631,9 +1668,12 @@ function drawImpliedFullYearFRWRDTotalAvgTable(data) {
 	data2.setFormattedValue(9,0,"Oct");
 	data2.setFormattedValue(10,0,"Nov");
 	data2.setFormattedValue(11,0,"Dec");
+		var formatter = new google.visualization.NumberFormat(
+			{pattern:'#,###'});
+		formatter.format(data, 1);
 	for (var col = 1; col < 12; col++) {
 		for (var row = 0; row < 12; row++) {
-			data2.setFormattedValue(row,col,parseFloat(data.getFormattedValue((col-1)*12+row,1)).toFixed(0).toString());
+			data2.setFormattedValue(row,col,data.getFormattedValue((col-1)*12+row,1));
 		}
 	}
 	var table = new google.visualization.Table(document.getElementById('tot-fut-table'));
@@ -1743,9 +1783,12 @@ function drawImpliedFullYearFRWRDLastThreeYearsAvgTable(data) {
 	data2.setFormattedValue(9,0,"Oct");
 	data2.setFormattedValue(10,0,"Nov");
 	data2.setFormattedValue(11,0,"Dec");
+		var formatter = new google.visualization.NumberFormat(
+			{pattern:'#,###'});
+		formatter.format(data, 1);
 	for (var col = 1; col < 12; col++) {
 		for (var row = 0; row < 12; row++) {
-			data2.setFormattedValue(row,col,parseFloat(data.getFormattedValue((col-1)*12+row,1)).toFixed(0).toString());
+			data2.setFormattedValue(row,col,data.getFormattedValue((col-1)*12+row,1));
 		}
 	}
 	var table = new google.visualization.Table(document.getElementById('3fut-table'));
@@ -1861,12 +1904,15 @@ function drawMOMImpliedFullYearBKWRDTotalAvgTable(data) {
 	data2.setFormattedValue(9,0,"Oct");
 	data2.setFormattedValue(10,0,"Nov");
 	data2.setFormattedValue(11,0,"Dec");
+		var formatter = new google.visualization.NumberFormat(
+			{pattern:'#.###%'});
+		formatter.format(data, 1);
 	for (var row = 1; row < 12; row++) {
-		data2.setFormattedValue(row,1,parseFloat(data.getFormattedValue(row-1,1)).toFixed(3).toString());
+		data2.setFormattedValue(row,1,data.getFormattedValue(row-1,1));
 	}
 	for (var col = 2; col < 12; col++) {
 		for (var row = 0; row < 12; row++) {
-			data2.setFormattedValue(row,col,parseFloat(data.getFormattedValue((col-1)*12-1+row,1)).toFixed(3).toString());
+			data2.setFormattedValue(row,col,data.getFormattedValue((col-1)*12-1+row,1));
 		}
 	}
 	var table = new google.visualization.Table(document.getElementById('mom-past-table'));
@@ -1983,12 +2029,15 @@ function drawMOMImpliedFullYearBKWRDLastThreeYearsAvgTable(data) {
 	data2.setFormattedValue(9,0,"Oct");
 	data2.setFormattedValue(10,0,"Nov");
 	data2.setFormattedValue(11,0,"Dec");
+		var formatter = new google.visualization.NumberFormat(
+			{pattern:'#.###%'});
+		formatter.format(data, 1);
 	for (var row = 1; row < 12; row++) {
-		data2.setFormattedValue(row,1,parseFloat(data.getFormattedValue(row-1,1)).toFixed(3).toString());
+		data2.setFormattedValue(row,1,data.getFormattedValue(row-1,1));
 	}
 	for (var col = 2; col < 12; col++) {
 		for (var row = 0; row < 12; row++) {
-			data2.setFormattedValue(row,col,parseFloat(data.getFormattedValue((col-1)*12-1+row,1)).toFixed(3).toString());
+			data2.setFormattedValue(row,col,data.getFormattedValue((col-1)*12-1+row,1));
 		}
 	}
 	var table = new google.visualization.Table(document.getElementById('3mom-table'));
@@ -2099,12 +2148,15 @@ function drawMOMImpliedFullYearFRWRDTotalAvgTable(data) {
 	data2.setFormattedValue(9,0,"Oct");
 	data2.setFormattedValue(10,0,"Nov");
 	data2.setFormattedValue(11,0,"Dec");
+		var formatter = new google.visualization.NumberFormat(
+			{pattern:'#.###%'});
+		formatter.format(data, 1);
 	for (var row = 1; row < 12; row++) {
-		data2.setFormattedValue(row,1,parseFloat(data.getFormattedValue(row-1,1)).toFixed(3).toString());
+		data2.setFormattedValue(row,1,data.getFormattedValue(row-1,1));
 	}
 	for (var col = 2; col < 12; col++) {
 		for (var row = 0; row < 12; row++) {
-			data2.setFormattedValue(row,col,parseFloat(data.getFormattedValue((col-1)*12-1+row,1)).toFixed(3).toString());
+			data2.setFormattedValue(row,col,data.getFormattedValue((col-1)*12-1+row,1));
 		}
 	}
 	var table = new google.visualization.Table(document.getElementById('mom-fut-table'));
@@ -2222,12 +2274,15 @@ function drawMOMImpliedFullYearFRWRDLastThreeYearsAvgTable(data) {
 	data2.setFormattedValue(9,0,"Oct");
 	data2.setFormattedValue(10,0,"Nov");
 	data2.setFormattedValue(11,0,"Dec");
+		var formatter = new google.visualization.NumberFormat(
+			{pattern:'#.###%'});
+		formatter.format(data, 1);
 	for (var row = 1; row < 12; row++) {
-		data2.setFormattedValue(row,1,parseFloat(data.getFormattedValue(row-1,1)).toFixed(3).toString());
+		data2.setFormattedValue(row,1,data.getFormattedValue(row-1,1));
 	}
 	for (var col = 2; col < 12; col++) {
 		for (var row = 0; row < 12; row++) {
-			data2.setFormattedValue(row,col,parseFloat(data.getFormattedValue((col-1)*12-1+row,1)).toFixed(3).toString());
+			data2.setFormattedValue(row,col,data.getFormattedValue((col-1)*12-1+row,1));
 		}
 	}
 	var table = new google.visualization.Table(document.getElementById('3mom-fut-table'));
@@ -2303,12 +2358,15 @@ function draw3MAV12MTHRollingTable(data) {
 	data2.setFormattedValue(9,0,"Oct");
 	data2.setFormattedValue(10,0,"Nov");
 	data2.setFormattedValue(11,0,"Dec");
+		var formatter = new google.visualization.NumberFormat(
+			{pattern:'#,###'});
+		formatter.format(data, 1);
 	for (var row = 2; row < 12; row++) {
-		data2.setFormattedValue(row,1,parseFloat(data.getFormattedValue(row-2,1)).toFixed(0).toString());
+		data2.setFormattedValue(row,1,data.getFormattedValue(row-2,1));
 	}
 	for (var col = 2; col < 11; col++) {
 		for (var row = 0; row < 12; row++) {
-			data2.setFormattedValue(row,col,parseFloat(data.getFormattedValue((col-1)*12-2+row,1)).toFixed(0).toString());
+			data2.setFormattedValue(row,col,data.getFormattedValue((col-1)*12-2+row,1));
 		}
 	}
 	var table = new google.visualization.Table(document.getElementById('3mav12-table'));
@@ -2389,12 +2447,15 @@ function draw3MAVYOY12MTHRollingTable(data) {
 	data2.setFormattedValue(9,0,"Oct");
 	data2.setFormattedValue(10,0,"Nov");
 	data2.setFormattedValue(11,0,"Dec");
+		var formatter = new google.visualization.NumberFormat(
+			{pattern:'#.###%'});
+		formatter.format(data, 1);
 	for (var row = 2; row < 12; row++) {
-		data2.setFormattedValue(row,1,parseFloat(data.getFormattedValue(row-2,1)).toFixed(3).toString());
+		data2.setFormattedValue(row,1,data.getFormattedValue(row-2,1));
 	}
 	for (var col = 2; col < 10; col++) {
 		for (var row = 0; row < 12; row++) {
-			data2.setFormattedValue(row,col,parseFloat(data.getFormattedValue((col-1)*12-2+row,1)).toFixed(3).toString());
+			data2.setFormattedValue(row,col,data.getFormattedValue((col-1)*12-2+row,1));
 		}
 	}	
 	var table = new google.visualization.Table(document.getElementById('yoy3mav12-table'));
