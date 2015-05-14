@@ -802,12 +802,13 @@ function drawChronologyChart(){
 	data.addRows(data_set);
 	
 	var options = {'title':'Total Passenger Volume 2004-2014',
-		'vAxis' : {format: 'decimal'},
-	'width' : 1000,
-		'height' : 750,
-		'chartArea.width' : 700,
-		'chartArea.height' : 500,
+		
+	'width' : 750,
+		'height' : 450,
+		'chartArea.width' : 500,
+		'chartArea.height' : 350,
 		'legend': {position: 'none'}
+		
 	};
 
 			
@@ -832,10 +833,10 @@ function drawIndexChart(){
 	
 	var options = {'title':'Total Passenger Index 2004-2014',
 		'vAxis' : {format: 'short'},
-		'width' : 1000,
-		'height' : 750,
-		'chartArea.width' : 700,
-		'chartArea.height' : 500,
+		'width' : 750,
+		'height' : 450,
+		'chartArea.width' : 500,
+		'chartArea.height' : 350,
 		'legend': {position: 'none'}
 	};
 
@@ -859,10 +860,10 @@ function drawYOYChart(){
 	data.addRows(row_data);
 	
 	var options = {'title':'Passenger Year on Year 2004-2014',
-	'width' : 1000,
-		'height' : 750,
-		'chartArea.width' : 700,
-		'chartArea.height' : 500,
+	'width' : 750,
+		'height' : 450,
+		'chartArea.width' : 500,
+		'chartArea.height' : 350,
 		'legend': {position: 'none'}
 	};
 
@@ -887,10 +888,10 @@ function drawMOMChart(){
 	data.addRows(row_data);
 	
 	var options = {'title':'Passenger Month on Month 2004-2014',
-	'width' : 1000,
-		'height' : 750,
-		'chartArea.width' : 700,
-		'chartArea.height' : 500,
+	'width' : 750,
+		'height' : 450,
+		'chartArea.width' : 500,
+		'chartArea.height' : 350,
 		'legend': {position: 'none'}
 	};
 
@@ -923,10 +924,10 @@ var data = new google.visualization.DataTable();
 	data.addRows(row_data);
 	
 	var options = {'title':'Passenger Quarter on Quarter 2004-2014',
-		'height' : 750,
-		'width' : 1000,
-		'chartArea.width' : 700,
-		'chartArea.height' : 500,
+		'width' : 750,
+		'height' : 450,
+		'chartArea.width' : 500,
+		'chartArea.height' : 350,
 		'legend': {position: 'none'}
 	};
 
@@ -999,10 +1000,10 @@ function draw12MTHRollingChart(){
 	data.addRows(row_data);
 	
 	var options = {'title':'12 Month Rolling 2004-2014',
-	'width' : 1000,
-		'height' : 750,
-		'chartArea.width' : 700,
-		'chartArea.height' : 500,
+	'width' : 750,
+		'height' : 450,
+		'chartArea.width' : 500,
+		'chartArea.height' : 350,
 		'legend': {position: 'none'}
 	};
 
@@ -1078,10 +1079,10 @@ function drawMOM12MTHRollingChart() {
 	data.addRows(row_data);
 	
 	var options = {'title':'MoM for the 12 Month Rolling 2004-2014',
-	'width' : 1000,
-		'height' : 750,
-		'chartArea.width' : 700,
-		'chartArea.height' : 500,
+	'width' : 750,
+		'height' : 450,
+		'chartArea.width' : 500,
+		'chartArea.height' : 350,
 		'legend': {position: 'none'}
 	};
 
@@ -1154,10 +1155,10 @@ function draw3MAVChart(){
 	data.addRows(row_data);
 	
 	var options = {'title':'3MAV 2004-2014',
-	'width' : 1000,
-		'height' : 750,
-		'chartArea.width' : 700,
-		'chartArea.height' : 500,
+	'width' : 750,
+		'height' : 450,
+		'chartArea.width' : 500,
+		'chartArea.height' : 350,
 		'legend': {position: 'none'}
 	};
 
@@ -1284,10 +1285,10 @@ function draw3MAVYOYChart(){
 	data.addRows(row_data);
 	
 	var options = {'title':'3MAV 2004-2014',
-	'width' : 1000,
-		'height' : 750,
-		'chartArea.width' : 700,
-		'chartArea.height' : 500,
+	'width' : 750,
+		'height' : 450,
+		'chartArea.width' : 500,
+		'chartArea.height' : 350,
 		'legend': {position: 'none'}};
 
 			var chart = new google.charts.Line(document.getElementById('3MAV_YOY_chart'));
@@ -1400,10 +1401,10 @@ function drawImpliedFullYearBKWRDTotalAvgChart(){
 	data.addRows(row_data);
 	
 	var options = {'title':' 2004-2014',
-	'width' : 1000,
-                     'height' : 750,
-				'chartArea.width' : 700,
-		'chartArea.height' : 500,
+	'width' : 750,
+		'height' : 450,
+		'chartArea.width' : 500,
+		'chartArea.height' : 350,
 		'legend': {position: 'none'}};
 
 			var chart = new google.charts.Line(document.getElementById('Implied_Full_Year_BKWRD_Total_Avg_Chart'));
@@ -1516,10 +1517,10 @@ function drawImpliedFullYearBKWRDLastThreeYearsAvgChart(){
 	
 
 	var options = {'title':'3MAV 2004-2014',
-	'width' : 1000,
-		'height' : 750,
-		'chartArea.width' : 700,
-		'chartArea.height' : 500,
+	'width' : 750,
+		'height' : 450,
+		'chartArea.width' : 500,
+		'chartArea.height' : 350,
 		'legend': {position: 'none'}};
 
 
@@ -1629,10 +1630,10 @@ function drawImpliedFullYearFRWRDTotalAvgChart(){
 	data.addRows(row_data);
 	
 	var options = {'title':' 2004-2014',
-	'width' : 1000,
-                     'height' : 750,
-				'chartArea.width' : 700,
-		'chartArea.height' : 500,
+	'width' : 750,
+		'height' : 450,
+		'chartArea.width' : 500,
+		'chartArea.height' : 350,
 		'legend': {position: 'none'}};
 
 			var chart = new google.charts.Line(document.getElementById('Implied_Full_Year_FRWRD_Total_Avg_Chart'));
@@ -1744,10 +1745,10 @@ function drawImpliedFullYearFRWRDLastThreeYearsAvgChart(){
 	
 
 	var options = {'title':'3MAV 2004-2014',
-	'width' : 1000,
-		'height' : 750,
-		'chartArea.width' : 700,
-		'chartArea.height' : 500,
+	'width' : 750,
+		'height' : 450,
+		'chartArea.width' : 500,
+		'chartArea.height' : 350,
 		'legend': {position: 'none'}};
 
 
@@ -1864,10 +1865,10 @@ function drawMOMImpliedFullYearBKWRDTotalAvgChart(){
 	
 	
 	var options = {'title':' 2004-2014',
-	'width' : 1000,
-                     'height' : 750,
-		'chartArea.width' : 700,
-		'chartArea.height' : 500,
+	'width' : 750,
+		'height' : 450,
+		'chartArea.width' : 500,
+		'chartArea.height' : 350,
 		'legend': {position: 'none'}};
 
 			var chart = new google.charts.Line(document.getElementById('MoM_Implied_Full_Year_BKWRD_Total_Avg_Chart'));
@@ -1989,10 +1990,10 @@ function drawMOMImpliedFullYearBKWRDLastThreeYearsAvgChart(){
 	
 
 	var options = {'title':'3MAV 2004-2014',
-	'width' : 1000,
-		'height' : 750,
-		'chartArea.width' : 700,
-		'chartArea.height' : 500,
+	'width' : 750,
+		'height' : 450,
+		'chartArea.width' : 500,
+		'chartArea.height' : 350,
 		'legend': {position: 'none'}};
 
 
@@ -2110,10 +2111,10 @@ function drawMOMImpliedFullYearFRWRDTotalAvgChart(){
 	data.addRows(row_data);
 	
 	var options = {'title':' 2004-2014',
-	'width' : 1000,
-                     'height' : 750,
-		'chartArea.width' : 700,
-		'chartArea.height' : 500,
+	'width' : 750,
+		'height' : 450,
+		'chartArea.width' : 500,
+		'chartArea.height' : 350,
 		'legend': {position: 'none'}};
 
 			var chart = new google.charts.Line(document.getElementById('MoM_Implied_Full_Year_FRWRD_Total_Avg_Chart'));
@@ -2233,10 +2234,10 @@ function drawMOMImpliedFullYearFRWRDLastThreeYearsAvgChart(){
 	
 
 	var options = {'title':'3MAV 2004-2014',
-	'width' : 1000,
-		'height' : 750,
-		'chartArea.width' : 700,
-		'chartArea.height' : 500,
+	'width' : 750,
+		'height' : 450,
+		'chartArea.width' : 500,
+		'chartArea.height' : 350,
 		'legend': {position: 'none'}};
 
 
@@ -2319,10 +2320,10 @@ function draw3MAV12MTHRollingChart(){
 	data.addRows(row_data);
 	
 	var options = {'title':'12 Month Rolling 2004-2014',
-	'width' : 1000,
-		'height' : 750,
-		'chartArea.width' : 700,
-		'chartArea.height' : 500,
+	'width' : 750,
+		'height' : 450,
+		'chartArea.width' : 500,
+		'chartArea.height' : 350,
 		'legend': {position: 'none'}
 	};
 
@@ -2407,10 +2408,10 @@ function draw3MAVYOY12MTHRollingChart(){
 	data.addRows(row_data);
 	
 	var options = {'title':'12 Month Rolling 2004-2014',
-	'width' : 1000,
-		'height' : 750,
-		'chartArea.width' : 700,
-		'chartArea.height' : 500,
+	'width' : 750,
+		'height' : 450,
+		'chartArea.width' : 500,
+		'chartArea.height' : 350,
 		'legend': {position: 'none'}
 	};
 
